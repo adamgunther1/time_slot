@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 // define model =================
 var Todo = mongoose.model('Todo', {
-  text : String
+  text : String,
+  done: Boolean
 });
 
 // make this available to our users in our Node applications
