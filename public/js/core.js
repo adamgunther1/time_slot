@@ -1,2 +1,2 @@
 // public/core.js
-angular.module('scotchTodo', ['todoController', 'todoService']);
+angular.module('angularTodo', ['todoController', 'todoService']);
