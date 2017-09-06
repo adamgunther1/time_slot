@@ -10,10 +10,7 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 // configuration =================
 // mongoose.connect(database.name);     // connect to mongoDB database
 const MONGOLAB_URI = 'mongodb://heroku_mzb7zzrt:gg91gpi6sd9rgah2dpa81kmp05@ds119044.mlab.com:19044/heroku_mzb7zzrt'
-mongoose.connect(process.env.MONGOLAB_URI, function (error) {
-  if (error) console.error(error)
-  else console.log('mongo connected')
-});
+mongoose.connect(process.env.MONGODB_URI)
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -27,5 +24,6 @@ require('./app/routes')(app);
 
 
 // listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
+// app.listen(8080);
+app.listen(process.env.PORT || 8080)
+console.log(`App listening on port 8080`);
