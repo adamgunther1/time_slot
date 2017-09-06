@@ -1,6 +1,3 @@
-// server.js
-
-// set up ========================
 var express  = require('express');
 var app      = express();                        // create our app w/ express
 var mongoose = require('mongoose');              // mongoose for mongodb
@@ -8,10 +5,15 @@ var morgan = require('morgan');                  // log requests to the console 
 var bodyParser = require('body-parser');         // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 // load config
-var database = require('./config/database');
+// var database = require('./config/database');
 
 // configuration =================
-mongoose.connect(database.name);     // connect to mongoDB database
+// mongoose.connect(database.name);     // connect to mongoDB database
+const MONGOLAB_URI = 'mongodb://heroku_mzb7zzrt:gg91gpi6sd9rgah2dpa81kmp05@ds119044.mlab.com:19044/heroku_mzb7zzrt'
+mongoose.connect(process.env.MONGOLAB_URI, function (error) {
+  if (error) console.error(error)
+  else console.log('mongo connected')
+});
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
