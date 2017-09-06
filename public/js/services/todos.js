@@ -2,7 +2,7 @@ angular.module('todoService', [])
 
     // super simple service
     // each function returns a promise object 
-    .factory('Todos', function($http) {
+    .factory('Todos', ['$http', function($http) {
         return {
             get : function() {
                 return $http.get('/api/v1/todos');
@@ -14,4 +14,4 @@ angular.module('todoService', [])
                 return $http.delete('/api/v1/todos/' + id);
             }
         }
-    });
+    }]);

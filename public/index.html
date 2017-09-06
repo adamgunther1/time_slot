@@ -1,5 +1,5 @@
 <!-- <!doctype html> -->
-<html lang="en">
+<html ng-app="angularTodo" lang="en">
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <!-- <html ng-app="angularTodo"> -->
 <head>
@@ -16,7 +16,7 @@
     <!-- JS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular -->
-    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.min.js"></script><!-- load angular -->
     
     <!-- Angular Custom -->
     <script src="js/controllers/main.js"></script> <!-- load up our controller -->
@@ -26,13 +26,13 @@
     
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
-<body ng-app="angularTodo" ng-controller="mainController">
+<body ng-controller="mainController">
     <div class="container">
 
         <!-- HEADER --> 
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Something</a>
+                <a class="navbar-brand" href="/">Auto-Schedular</a>
             </div>
             
             <!-- LINK TO PAGES -->
@@ -41,9 +41,11 @@
             </ul>
         </nav>
 
+        
+
         <!-- ANGULAR DYNAMIC CONTENT -->
         <div ng-view></div>
-        
+
     </div>
 
 </body>

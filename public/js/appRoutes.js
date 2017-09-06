@@ -11,7 +11,7 @@ angular.module('appRoutes', [])
 
       .when('/todos', {
         templateUrl: 'views/todos.html',
-        controller: 'MainController'
+        controller: 'mainController'
       })
 
     $locationProvider.html5Mode(true)

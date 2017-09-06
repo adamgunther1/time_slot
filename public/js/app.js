@@ -1,2 +1,2 @@
 // public/app.js
-angular.module('angularTodo', ['mainCtrl', 'todoService']);
+angular.module('angularTodo', ['ngRoute', 'appRoutes', 'mainCtrl', 'todoService']);
