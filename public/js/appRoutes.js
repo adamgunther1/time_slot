@@ -4,16 +4,16 @@ angular.module('appRoutes', [])
 
     $routeProvider
 
-      .when('/', {
-        templateUrl: 'views/index.html',
+      // .when('/', {
+      //   templateUrl: 'views/home.html',
+      //   controller: 'MainController'
+      // })
+
+      .when('/todos', {
+        templateUrl: 'views/todos.html',
         controller: 'MainController'
       })
 
-      // .when('/todos', {
-      //   templateUrl: 'sample code',
-      //   controller: 'sample code'
-      // })
-
     $locationProvider.html5Mode(true)
-    
+
   }])
