@@ -14,6 +14,11 @@ angular.module('appRoutes', [])
         controller: 'mainController'
       })
 
+      // .when('/login', {
+      //   templateUrl: 'view/login.html',
+      //   controller: 'loginController'
+      // })
+
     $locationProvider.html5Mode(true)
 
   }])
