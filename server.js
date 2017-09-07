@@ -9,6 +9,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+require('dotenv').config();
 
 
 // mongodb configuration =================
