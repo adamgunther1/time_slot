@@ -62,4 +62,20 @@ module.exports = function(app) {
     res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
   });
 
+  app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+  app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect : '/todos',
+        failureRedirect : '/'
+    }));
+
 };
+
+function isLoggedIn(req, res, next) {
+    
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
