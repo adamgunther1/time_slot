@@ -57,23 +57,34 @@ module.exports = function(app, passport) {
       });
   });
 
-  // application -------------------------------------------------------------
-  app.get('*', function(req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-  });
+    // application -------------------------------------------------------------
+    // app.get('/login', function(req, res) {
+    //     res.sendfile('./public/login.html')
+    // });
 
-//   app.get('/login', function(req, res) {
-//     res.sendfile('./public/login.html')
-//   });
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
-  app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-
-  app.get('/auth/google/callback',
+    app.get('/auth/google/callback',
     passport.authenticate('google', {
         successRedirect : '/todos',
         failureRedirect : '/'
     }));
 
+    // route to log out
+    app.post('/logout', function(req, res){
+        req.logOut();
+        res.send(200);
+    });
+
+    // route to test if the user is logged in or not
+    app.get('/loggedin', function(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    });
+  
+
+    app.get('*', function(req, res) {
+        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
 };
 
 function isLoggedIn(req, res, next) {
