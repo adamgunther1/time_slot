@@ -25,6 +25,7 @@ module.exports = function (passport) {
     process.nextTick(function() {
 
       User.findOrCreate({ 'google.id' : profile.id }, function(err, user) {
+        console.log('ehhhhh')
         if (err)
           return done(err);
         if (user) {
