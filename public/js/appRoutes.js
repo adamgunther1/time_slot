@@ -60,9 +60,9 @@ angular.module('appRoutes', [])
         templateUrl: 'views/login.html',
       })
       
-      .otherwise({
-        redirectTo: '/'
-      })
+      // .otherwise({
+      //   redirectTo: '/'
+      // })
 
     $locationProvider.html5Mode(true)
 

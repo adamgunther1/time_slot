@@ -30,7 +30,7 @@ module.exports = function (passport) {
         if (user) {
           return done(null, user);
         } else {
-          var newUSer = new User();
+          var newUser = new User();
 
           newUser.google.id = profile.id;
           newUser.google.token = token;

@@ -62,18 +62,19 @@ module.exports = function(app, passport) {
     //     res.sendfile('./public/login.html')
     // });
 
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    // app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google', passport.authenticate('google'));
 
     app.get('/auth/google/callback',
         passport.authenticate('google', {
             successRedirect : '/',
-            failureRedirect : '/login'
+            failureRedirect : '/todos'
     }));
 
-    // route to log out
-    app.post('/logout', function(req, res){
-        req.logOut();
-        res.send(200);
+    // route for logging out
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/login');
     });
 
     // route to test if the user is logged in or not
