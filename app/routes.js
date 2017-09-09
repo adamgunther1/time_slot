@@ -58,10 +58,6 @@ module.exports = function(app, passport) {
   });
 
     // application -------------------------------------------------------------
-    // app.get('/login', function(req, res) {
-    //     res.sendfile('./public/login.html')
-    // });
-
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
     app.get('/auth/google/callback',
