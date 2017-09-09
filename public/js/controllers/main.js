@@ -3,13 +3,10 @@ angular.module('mainCtrl', [])
   .controller('mainController', function($scope, $http, Todos) {
     $scope.formData = {};
 
-    $scope.loggedIn = function(req) {
-        
-        if (req.isAuthenticated())
-            return true;
-    
-        return false;
-    };
+    $scope.user = $http.get('/loggedin')
+    .success(function(user){
+        return user;
+    }
     
     // when landing on the page, get all todos and show them
     Todos.get()
