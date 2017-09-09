@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var todoSchema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 // define model =================
 var Todo = mongoose.model('Todo', {

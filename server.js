@@ -37,6 +37,7 @@ app.use(flash());                                               // use connnect-
 
 // load the routes
 require('./app/routes')(app, passport);                         // load our routes and pass in our app and fully configured passport
+// require('./app/routes')(app);                         // load our routes and pass in our app
 
 
 // listen (start app with node server.js) ======================================
