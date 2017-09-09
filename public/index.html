@@ -39,8 +39,8 @@
             <!-- LINK TO PAGES -->
             <ul class="nav navbar-nav">
                 <!-- <li><a href="/todos">Todos</a></li> -->
-                <li><a href="/login">Login</a></li>
-                <li><a href="/logout" target="_self">Logout</a></li>
+                <li ng-if="loggedIn(req)"><a href="/login">Login</a></li>
+                <li ng-if="!loggedIn(req)"><a href="/logout" target="_self">Logout</a></li>
             </ul>
         </nav>
         

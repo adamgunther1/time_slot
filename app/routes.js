@@ -1,10 +1,17 @@
 // routes ======================================================================
 var Todo = require('./models/todo');
+var User = require('./models/user');
+var session = require('express-session');
 
 // expose the routes to our app with module.exports
 module.exports = function(app, passport) {
 
   // api ---------------------------------------------------------------------
+  // get current user
+  app.get('/api/v1/current-user', function(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+  });
+
   // get all todos
   app.get('/api/v1/todos', function(req, res) {
     
