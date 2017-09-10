@@ -25,8 +25,6 @@ angular.module('mainCtrl', [])
     $scope.createTodo = function() {
 
         // validate the formData to make sure that something is there
-        // if form is empty, nothing will happen
-        // people can't just hold enter to keep adding the same to-do anymore
         if (!$.isEmptyObject($scope.formData)) {
         
         // call the create function from our service (returns a promise object)

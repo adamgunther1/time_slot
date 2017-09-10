@@ -63,7 +63,7 @@ module.exports = function(app, passport) {
   });
 
     // application -------------------------------------------------------------
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email', 'https://www.googleapis.com/auth/calendar'] }));
 
     app.get('/auth/google/callback',
         passport.authenticate('google', {
@@ -82,7 +82,6 @@ module.exports = function(app, passport) {
         res.send(req.isAuthenticated() ? req.user : '0');
     });
   
-
     app.get('*', function(req, res) {
         res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
