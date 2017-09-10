@@ -2,14 +2,6 @@ angular.module('mainCtrl', [])
 
   .controller('mainController', function($scope, $http, Todos) {
     $scope.formData = {};
-<<<<<<< HEAD
-
-    $scope.user = $http.get('/loggedin')
-    .success(function(user){
-        return user;
-    }
-=======
->>>>>>> parent of d7cdc65... adds a new api endpoint for current user
     
         // when landing on the page, get all todos and show them
         Todos.get()
