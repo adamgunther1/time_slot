@@ -5,7 +5,7 @@ angular.module('mainCtrl', [])
 
     Todos.getUser()
         .success(function(user){
-            if (user !== 0) {
+            if (user !== '0') {
                 $scope.loggedIn = true;
             } else {
                 $scope.loggedIn = false;
