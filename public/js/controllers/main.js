@@ -3,14 +3,16 @@ angular.module('mainCtrl', [])
   .controller('mainController', function($scope, $http, Todos) {
     $scope.formData = {};
     $scope.loggedIn = false;
+    $scope.loggedOut = true;
 
     Todos.getUser()
         .success(function(user){
-            console.log(user);
             if (user !== 0) {
                 $scope.loggedIn = true;
+                $scope.loggedOut = false;
             } else {
                 $scope.loggedIn = false;
+                $scope.loggedOut = true
             }
         });
     
