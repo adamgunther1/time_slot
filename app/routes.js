@@ -5,6 +5,11 @@ var Todo = require('./models/todo');
 module.exports = function(app, passport) {
 
   // api ---------------------------------------------------------------------
+  // get current user
+  app.get('/api/v1/current-user', function(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+  });
+
   // get all todos
   app.get('/api/v1/todos', function(req, res) {
     
