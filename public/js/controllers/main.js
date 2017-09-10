@@ -9,7 +9,7 @@ angular.module('mainCtrl', [])
                 $scope.loggedIn = true;
             } else {
                 $scope.loggedIn = false;
-            }
+            };
         });
     
     // when landing on the page, get all todos and show them
