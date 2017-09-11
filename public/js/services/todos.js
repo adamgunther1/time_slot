@@ -17,7 +17,11 @@ angular.module('todoService', [])
                 return $http.get('/api/v1/current-user');
             },
             getCalendar : function() {
-                return $http.get('https://www.googleapis.com/calendar/v3/calendars/adamgunther1@gmail.com/events')
+                return $http({
+                    method: 'GET',
+                    url: 'https://www.googleapis.com/calendar/v3/calendars/adamgunther1@gmail.com/events', 
+                    auth
+                })
             }
         }
     }]);
