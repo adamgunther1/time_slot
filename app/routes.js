@@ -73,14 +73,6 @@ module.exports = function(app, passport) {
             failureRedirect : '/login'
     }));
 
-    app.get('/events', function(req, res) {
-        calendar.events.list({
-            calendarId: 'adamgunther1@gmail.com'
-        }).success(function (events) {
-            res.json(events)
-        })
-    })    
-
     // route for logging out
     app.get('/logout', function(req, res) {
         req.logout();
