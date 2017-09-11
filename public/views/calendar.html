@@ -1,0 +1,20 @@
+<div ng-controller="calendarCtrl as vm">
+    <h2 class="text-center">{{ vm.calendarTitle }}</h2>
+    <ng-include src="'../views/calendarControls.html'"></ng-include>
+    <mwl-calendar
+        events="vm.events"
+        view="vm.calendarView"
+        view-title="vm.calendarTitle"
+        view-date="vm.viewDate"
+        on-event-click="vm.eventClicked(calendarEvent)"
+        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+        cell-is-open="vm.cellIsOpen"
+        day-view-start="06:00"
+        day-view-end="17:59"
+        day-view-split="30"
+        cell-modifier="vm.modifyCell(calendarCell)"
+        cell-auto-open-disabled="true"
+        on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
+    </mwl-calendar>
+</div>
+

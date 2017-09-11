@@ -3,6 +3,11 @@ angular.module('mainCtrl', [])
   .controller('mainController', function($scope, $http, Todos) {
     $scope.formData = {};
 
+    Todos.getCalendar()
+        .success(function(calendar){
+            console.log(calendar)
+        })
+
     Todos.getUser()
         .success(function(user){
             if (user !== '0') {

@@ -49,6 +49,14 @@ angular.module('appRoutes', [])
     $routeProvider
 
       .when('/', {
+        templateUrl: 'views/calendar.html',
+        controller: 'calendarCtrl'//,
+        // resolve: {
+        //   loggedin: checkLoggedin
+        // }
+      })
+
+      .when('/todos', {
         templateUrl: 'views/todos.html',
         controller: 'mainController',
         resolve: {
@@ -64,7 +72,11 @@ angular.module('appRoutes', [])
       //   redirectTo: '/'
       // })
 
-    $locationProvider.html5Mode(true)
+    // $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 
   }])
 

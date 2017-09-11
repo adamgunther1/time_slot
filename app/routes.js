@@ -71,6 +71,8 @@ module.exports = function(app, passport) {
             failureRedirect : '/login'
     }));
 
+    
+
     // route for logging out
     app.get('/logout', function(req, res) {
         req.logout();
