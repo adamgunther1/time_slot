@@ -13,7 +13,13 @@ module.exports = function(app, passport) {
   });
 
   app.patch('/api/v1/current-user', function(req, res){
-    console.log(req.params)
+    User.findOne({'_id' : req.body._id}, function(err, user) {
+        if (err)
+            res.send(err);
+        if (user) {
+            user.save;
+        }
+    });
   });
 
   // get all todos
