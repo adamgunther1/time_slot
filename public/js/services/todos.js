@@ -24,6 +24,9 @@ angular.module('todoService', [])
                                 Authorization : `Bearer ${user.google.token}` 
                             }
                 })
+            },
+            updateUser : function(user) {
+                return $http.patch(`/api/v1/current-user`, user);
             }
         }
     }]);

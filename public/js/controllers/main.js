@@ -1,5 +1,3 @@
-var User = require('../../app/models/user');
-
 angular.module('mainCtrl', [])
 
   .controller('mainController', function($scope, $http, Todos) {
@@ -42,9 +40,7 @@ angular.module('mainCtrl', [])
                         //     user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
                         //     user.calendar.items[i].reminders.useDefault = calendar.items[i].reminders.useDefault;
                         // });
-                        user.save(function (err) {
-                            if (err) throw err;
-                        });
+                        Todos.updateUser(user)
                     });
             } else {
                 $scope.loggedIn = false;
