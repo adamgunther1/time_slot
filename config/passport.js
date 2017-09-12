@@ -28,14 +28,13 @@ module.exports = function (passport) {
             if (err)
               return done(err);
             if (user) {
-              console.log(token)
-              user.google.token = '5';
+              console.log(user)
+              user.google.token = token;
               return done(null, user);
             } else {
               var newUser = new User();
 
               newUser.google.id = profile.id;
-              // newUser.google.refresh_token = refreshToken;
               newUser.google.token = 'token';
               newUser.google.name = profile.displayName;
               newUser.google.email = profile.emails[0].value;
