@@ -1,5 +1,6 @@
 // routes ======================================================================
 var Todo = require('./models/todo');
+var User = require('./models/user');
 var google = require('googleapis');
 var calendar = google.calendar('v3');
 
@@ -13,13 +14,15 @@ module.exports = function(app, passport) {
   });
 
   app.patch('/api/v1/current-user', function(req, res){
-    User.findOne({'_id' : req.body._id}, function(err, user) {
-        if (err)
-            res.send(err);
-        if (user) {
-            user.save;
-        }
-    });
+      console.log(req.body)
+    // User.findOne({'_id' : req.body._id}, function(err, user) {
+    //     if (err)
+    //         res.send(err);
+    //     if (user) {
+    //         user = req.body;
+    //         user.save;
+    //     }
+    // });
   });
 
   // get all todos
