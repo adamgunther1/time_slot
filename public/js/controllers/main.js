@@ -7,7 +7,7 @@ angular.module('mainCtrl', [])
         .success(function(user){
             if (user !== '0') {
                 $scope.loggedIn = true;
-                Todos.getCalendar()
+                Todos.getCalendar(user)
                     .success(function (calendar) {
                         console.log(calendar)
                     })
