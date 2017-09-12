@@ -28,6 +28,7 @@ module.exports = function (passport) {
             if (err)
               return done(err);
             if (user) {
+              console.log(token)
               user.google.token = '5';
               return done(null, user);
             } else {
@@ -35,7 +36,7 @@ module.exports = function (passport) {
 
               newUser.google.id = profile.id;
               // newUser.google.refresh_token = refreshToken;
-              newUser.google.token = '5';
+              newUser.google.token = 'token';
               newUser.google.name = profile.displayName;
               newUser.google.email = profile.emails[0].value;
               
