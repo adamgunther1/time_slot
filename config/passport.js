@@ -28,7 +28,7 @@ module.exports = function (passport) {
             if (err)
               return done(err);
             if (user) {
-              console.log(user)
+              console.log(user.google)
               user.google.token = token;
               return done(null, user);
             } else {
