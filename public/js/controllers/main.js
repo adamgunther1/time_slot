@@ -1,3 +1,5 @@
+var User = require('../../app/models/user');
+
 angular.module('mainCtrl', [])
 
   .controller('mainController', function($scope, $http, Todos) {
