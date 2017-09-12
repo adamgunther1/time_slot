@@ -28,7 +28,7 @@ module.exports = function (passport) {
             if (err)
               return done(err);
             if (user) {
-              user.google.token = token;
+              user.google.token = '5';
               return done(null, user);
             } else {
               var newUser = new User();
