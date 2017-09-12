@@ -15,9 +15,15 @@ angular.module('todoService', [])
             },
             getUser : function() {
                 return $http.get('/api/v1/current-user');
-            }//,
-            // getCalendar : function() {
-            //     return $http.get('https://www.googleapis.com/calendar/v3/calendars/adamgunther1@gmail.com/events&access_token=ya29.GlvABEktelDjDHJs2E9nKaqooL9epLrhARkgbi--WYCi1KcVt9797kLqM9--tD9VTx4M_acyMcplvCYu5mt7shpyvGaVRP2N1uhTa-ESDw0S2EscL1lPw_b9thp5')
-            // }
+            },
+            getCalendar : function(user) {
+                return $http({
+                            method : 'GET',
+                            url : `https://www.googleapis.com/calendar/v3/calendars/${user.google.email}/events`,
+                            headers : {
+                                Authorization : `Bearer ${user.google.token}` 
+                            }
+                })
+            }
         }
     }]);
