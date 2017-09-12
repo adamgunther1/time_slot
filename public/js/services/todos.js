@@ -26,7 +26,7 @@ angular.module('todoService', [])
                 })
             },
             updateUser : function(user) {
-                return $http.put(`/api/v1/current-user`, user);
+                return $http.patch(`/api/v1/current-user`, user);
             }
         }
     }]);

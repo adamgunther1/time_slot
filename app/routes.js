@@ -12,6 +12,10 @@ module.exports = function(app, passport) {
     res.send(req.isAuthenticated() ? req.user : '0');
   });
 
+  app.patch('/api/v1/current-user', function(req, res){
+    console.log(req.params)
+  });
+
   // get all todos
   app.get('/api/v1/todos', function(req, res) {
     
@@ -63,6 +67,7 @@ module.exports = function(app, passport) {
           });
       });
   });
+
 
     // application -------------------------------------------------------------
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email', 'https://www.googleapis.com/auth/calendar'] }));
