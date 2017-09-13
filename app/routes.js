@@ -11,8 +11,9 @@ module.exports = function(app, passport) {
   // get current user
   app.get('/api/v1/current-user', function(req, res) {
     // res.send(req.isAuthenticated() ? req.user : '0');
-    res.setHeader('content-type', 'application/json');
-    res.send(req.isAuthenticated() ? JSON.stringify(req.user) : '0');
+    // res.setHeader('content-type', 'application/json');
+    // res.send(req.isAuthenticated() ? JSON.stringify(req.user) : '0');
+    res.send(req.isAuthenticated() ? req.user : '0');
   });
 
   app.put('/api/v1/current-user', function(req, res){

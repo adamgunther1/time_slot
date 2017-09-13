@@ -1,6 +1,6 @@
 angular.module('mwl.calendar.docs', [])
 
-  .controller('calendarCtrl', function(moment, calendarConfig) {
+  .controller('calendarCtrl', function(moment, calendarConfig, Todos) {
 
       var vm = this;
       
@@ -18,34 +18,52 @@ angular.module('mwl.calendar.docs', [])
               // alert.show('Deleted', args.calendarEvent);
             }
           }];
-          vm.events = [
-            {
-              title: 'An event',
-              color: calendarConfig.colorTypes.warning,
-              startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-              endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-              draggable: true,
-              resizable: true,
-              actions: actions
-            }, {
-              title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
-              color: calendarConfig.colorTypes.info,
-              startsAt: moment().subtract(1, 'day').toDate(),
-              endsAt: moment().add(5, 'days').toDate(),
-              draggable: true,
-              resizable: true,
-              actions: actions
-            }, {
-              title: 'This is a really long event title that occurs on every year',
-              color: calendarConfig.colorTypes.important,
-              startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-              endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-              recursOn: 'year',
-              draggable: true,
-              resizable: true,
-              actions: actions
-            }
-          ];
+
+          let formattedCalendarEvents = [];
+          Todos.getUser()
+            .success(function (user) {
+              let calendarEvents = user.items;
+              formattedCalendarEvents = calendarEvents.map(function (event) {
+                return {
+                          title: event.summary,
+                          color: calendarConfig.colorTypes.info,
+                          startsAt: event.startTime,
+                          endsAt: event.endTime,
+                          draggable: true,
+                          resizable: true,
+                          actions: actions
+                       }
+              })
+              return formattedCalendarEvents;
+            })
+          vm.events = formattedCalendarEvents;// [
+          //   {
+          //     title: 'An event',
+          //     color: calendarConfig.colorTypes.warning,
+          //     startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
+          //     endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
+          //     draggable: true,
+          //     resizable: true,
+          //     actions: actions
+          //   }, {
+          //     title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
+          //     color: calendarConfig.colorTypes.info,
+          //     startsAt: moment().subtract(1, 'day').toDate(),
+          //     endsAt: moment().add(5, 'days').toDate(),
+          //     draggable: true,
+          //     resizable: true,
+          //     actions: actions
+          //   }, {
+          //     title: 'This is a really long event title that occurs on every year',
+          //     color: calendarConfig.colorTypes.important,
+          //     startsAt: moment().startOf('day').add(7, 'hours').toDate(),
+          //     endsAt: moment().startOf('day').add(19, 'hours').toDate(),
+          //     recursOn: 'year',
+          //     draggable: true,
+          //     resizable: true,
+          //     actions: actions
+          //   }
+          // ];
       
           vm.cellIsOpen = true;
       
