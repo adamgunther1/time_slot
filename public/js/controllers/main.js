@@ -61,10 +61,10 @@ angular.module('mainCtrl', [])
                             user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
                             user.calendar.items[i].sequence = calendar.items[i].sequence;
                             
-                            user.calendar.items[i].attendees = [];
-                            calendar.items[i].attendees.forEach(function (attendee, j) {
-                                user.calendar.items[i].attendees[j] = attendee; 
-                            })
+                            // user.calendar.items[i].attendees = [];
+                            // calendar.items[i].attendees.forEach(function (attendee, j) {
+                            //     user.calendar.items[i].attendees[j] = attendee; 
+                            // })
 
                             // user.calendar.items[i].attendees.email = calendar.items[i].attendees.email;
                             // user.calendar.items[i].attendees.displayName = calendar.items[i].attendees.displayName;
