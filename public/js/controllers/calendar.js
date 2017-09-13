@@ -23,7 +23,7 @@ angular.module('mwl.calendar.docs', [])
             Todos.getUser()
               .success(function (user) {
                 let calendarEvents = user.calendar.items;
-                let formattedCalendarEvents = calendarEvents.map(function (event) {
+                formattedCalendarEvents = calendarEvents.map(function (event) {
                   return {
                             title: event.summary,
                             color: calendarConfig.colorTypes.info,
@@ -34,8 +34,8 @@ angular.module('mwl.calendar.docs', [])
                             actions: actions
                          }
                 });
-                return formattedCalendarEvents;
                 console.log(formattedCalendarEvents);
+                return formattedCalendarEvents;
               });
           };
 
