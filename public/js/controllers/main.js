@@ -9,6 +9,7 @@ angular.module('mainCtrl', [])
                 $scope.loggedIn = true;
                 Todos.getCalendar(user)
                     .success(function (calendar) {
+                        console.log(calendar)
                         user.calendar.kind = calendar.kind;
                         user.calendar.etag = calendar.etag;
                         user.calendar.summary = calendar.summary;
