@@ -10,14 +10,10 @@ module.exports = function(app, passport) {
   // api ---------------------------------------------------------------------
   // get current user
   app.get('/api/v1/current-user', function(req, res) {
-    // res.send(req.isAuthenticated() ? req.user : '0');
-    // res.setHeader('content-type', 'application/json');
-    // res.send(req.isAuthenticated() ? JSON.stringify(req.user) : '0');
-    res.send(req.isAuthenticated() ? req.user : '0');
+    res.json(req.isAuthenticated() ? req.user : '0');
   });
 
   app.put('/api/v1/current-user', function(req, res){
-    //   console.log(req.body)
     User.findOne({'_id' : req.body._id}, function(err, user) {
         if (err)
             res.send(err);
@@ -28,7 +24,7 @@ module.exports = function(app, passport) {
             user.calendar.timeZone = req.body.calendar.timeZone;
             user.calendar.accessRole = req.body.calendar.accessRole;
             user.calendar.nextSyncToken = req.body.calendar.nextSyncToken;
-            user.calendar.items = req.body.calendar.items;
+            // user.calendar.items = req.body.calendar.items;
             user.save();
 
         }
