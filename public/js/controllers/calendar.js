@@ -39,6 +39,10 @@ angular.module('mwl.calendar.docs', [])
               return formattedCalendarEvents;
             });
           vm.events = formattedCalendarEvents;
+          console.log('vm.events')
+          console.log(vm.events)
+          console.log('formatted calendar events')
+          console.log(formattedCalendarEvents)
           // vm.events = [
           //   {
           //     title: 'An event', 
