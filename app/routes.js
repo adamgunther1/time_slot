@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
   // get current user
   app.get('/api/v1/current-user', function(req, res) {
     // res.send(req.isAuthenticated() ? req.user : '0');
-    res.json(req.isAuthenticated() ? req.user : '0');
+    res.send(req.isAuthenticated() ? req.user : '0');
   });
 
   app.put('/api/v1/current-user', function(req, res){
@@ -22,10 +22,12 @@ module.exports = function(app, passport) {
         if (user) {
             // console.log('user' + user)
             // console.log('req.body' + req.body)
-            user = req.body;
+            // user = req.body;
+            user.calendar.kind = 'events';
             // console.log('NEW USER')
             // console.log(user)
             // user.save();
+            user.save();
 
         }
     });
