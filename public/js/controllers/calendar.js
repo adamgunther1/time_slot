@@ -40,11 +40,10 @@ angular.module('mwl.calendar.docs', [])
               });
           };
 
-          vm.events = getEvents();
-          console.log('vm.events');
+          vm.events = getEvents().then(function (events) {
+            return events;
+          });
           console.log(vm.events);
-          console.log('formatted calendar events');
-          console.log($rootScope.formattedCalendarEvents);
 
           // vm.events = [
           //   {
