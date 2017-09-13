@@ -25,14 +25,14 @@ module.exports = function(app, passport) {
             user.calendar.accessRole = req.body.calendar.accessRole;
             user.calendar.nextSyncToken = req.body.calendar.nextSyncToken;
             user.calendar.items = req.body.calendar.items;
-            user.save()
-                .then(function (err, user) {
-                    res.status(200).json(user)
-                })
-                .fail(function (err) {
+            user.save(function (err, user) {
+                if (err) {
                     res.send(err);
-                });
-
+                }
+                if (user) {
+                    res.json(user);
+                }
+            })
         }
     });
   });
