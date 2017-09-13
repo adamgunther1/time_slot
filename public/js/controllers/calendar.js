@@ -20,7 +20,7 @@ angular.module('mwl.calendar.docs', [])
           }];
           vm.events = [
             {
-              title: 'An event',
+              title: 'An event', 
               color: calendarConfig.colorTypes.warning,
               startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
               endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
