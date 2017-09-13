@@ -69,7 +69,7 @@ angular.module('mainCtrl', [])
                             user.calendar.items[i].end.dateTime = Date.parse(calendar.items[i].end.dateTime);
                             user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
                             user.calendar.items[i].sequence = calendar.items[i].sequence;
-
+                            console.log(calendar.items[i].attendees);
                             calendar.items[i].attendees.forEach(function (attendee, j) {
                                 user.calendar.items[i].attendees[j] = attendee; 
                             })
