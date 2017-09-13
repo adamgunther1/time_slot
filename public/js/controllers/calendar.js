@@ -59,10 +59,11 @@ angular.module('mwl.calendar.docs', [])
                 return formattedCalendarEvents;
               });
           };;
+          vm.events();
           console.log('vm.events');
           console.log(vm.events);
-          console.log('formatted calendar events');
-          console.log(formattedCalendarEvents);
+          // console.log('formatted calendar events');
+          // console.log(formattedCalendarEvents);
 
           // vm.events = [
           //   {
