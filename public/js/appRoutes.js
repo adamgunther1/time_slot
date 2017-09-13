@@ -50,10 +50,10 @@ angular.module('appRoutes', [])
 
       .when('/', {
         templateUrl: 'views/calendar.html',
-        controller: 'calendarCtrl'//,
-        // resolve: {
-        //   loggedin: checkLoggedin
-        // }
+        controller: 'calendarCtrl',
+        resolve: {
+          loggedin: checkLoggedin
+        }
       })
 
       .when('/todos', {

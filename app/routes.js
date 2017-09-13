@@ -20,9 +20,6 @@ module.exports = function(app, passport) {
         if (err)
             res.send(err);
         if (user) {
-            // console.log('user' + user)
-            // console.log('req.body' + req.body)
-            // user = req.body;
             user.calendar.kind = req.body.calendar.kind;
             user.calendar.etag = req.body.calendar.etag;
             user.calendar.summary = req.body.calendar.summary;
@@ -30,9 +27,6 @@ module.exports = function(app, passport) {
             user.calendar.accessRole = req.body.calendar.accessRole;
             user.calendar.nextSyncToken = req.body.calendar.nextSyncToken;
             user.calendar.items = req.body.calendar.items;
-            // console.log('NEW USER')
-            // console.log(user)
-            // user.save();
             user.save();
 
         }
