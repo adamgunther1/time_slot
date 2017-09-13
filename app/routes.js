@@ -21,7 +21,9 @@ module.exports = function(app, passport) {
         if (user) {
             console.log('user' + user)
             console.log('req.body' + req.body)
-            user.calendar = req.body;
+            user = req.body;
+            console.log('NEW USER')
+            console.log(user)
             user.save;
         }
     });
