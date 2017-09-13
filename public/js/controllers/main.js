@@ -18,6 +18,7 @@ angular.module('mainCtrl', [])
                         user.calendar.nextSyncToken = calendar.nextSyncToken;
                         user.calendar.items = [];
                         calendar.items.forEach(function (item, i) {
+                            console.log(calendar.items[i].kind)
                             user.calendar.items[i].kind = calendar.items[i].kind;
                             user.calendar.items[i].etag = calendar.items[i].etag;
                             user.calendar.items[i].id = calendar.items[i].id;
