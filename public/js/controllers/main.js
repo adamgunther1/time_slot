@@ -83,7 +83,7 @@ angular.module('mainCtrl', [])
                             user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
                             user.calendar.items[i].reminders.useDefault = calendar.items[i].reminders.useDefault;
                         });
-                        console.log('user before update user function' + user)
+                        console.log(user)
                         Todos.updateUser(user)
                     });
             } else {
