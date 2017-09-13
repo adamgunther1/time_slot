@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
   // get current user
   app.get('/api/v1/current-user', function(req, res) {
     // res.send(req.isAuthenticated() ? req.user : '0');
-    res.setHeader({'content-type': 'application/json'});
+    res.setHeader('content-type': 'application/json');
     res.json(req.isAuthenticated() ? req.user : '0');
   });
 
