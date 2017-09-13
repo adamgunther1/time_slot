@@ -18,7 +18,7 @@ angular.module('mwl.calendar.docs', [])
               // alert.show('Deleted', args.calendarEvent);
             }
           }];
-          let formattedCalendarEvents;
+          
           var getEvents = function () {
             Todos.getUser()
               .success(function (user) {
@@ -34,14 +34,31 @@ angular.module('mwl.calendar.docs', [])
                             actions: actions
                          }
                 })
-              })
-              .then(function (formattedCalendarEvents) {
                 console.log(formattedCalendarEvents);
                 return formattedCalendarEvents;
               });
           };
 
-          vm.events = getEvents();
+          // vm.events = getEvents();
+          vm.events = function () {
+            Todos.getUser()
+              .success(function (user) {
+                let calendarEvents = user.calendar.items;
+                formattedCalendarEvents = calendarEvents.map(function (event) {
+                  return {
+                            title: event.summary,
+                            color: calendarConfig.colorTypes.info,
+                            startsAt: moment(event.startTime).toDate(),
+                            endsAt: moment(event.endTime).toDate(),
+                            draggable: true,
+                            resizable: true,
+                            actions: actions
+                         }
+                })
+                console.log(formattedCalendarEvents);
+                return formattedCalendarEvents;
+              });
+          };;
           console.log('vm.events');
           console.log(vm.events);
           console.log('formatted calendar events');
