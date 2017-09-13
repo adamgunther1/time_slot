@@ -19,26 +19,26 @@ angular.module('mwl.calendar.docs', [])
             }
           }];
           vm.events;
-          getEvents();
           var getEvents = function () {
             return Todos.getUser()
-              .success(function (user) {
-                let calendarEvents = user.calendar.items;
-                let formattedCalendarEvents = calendarEvents.map(function (event) {
-                  return {
-                            title: event.summary,
-                            color: calendarConfig.colorTypes.info,
-                            startsAt: moment(event.startTime).toDate(),
-                            endsAt: moment(event.endTime).toDate(),
-                            draggable: true,
-                            resizable: true,
-                            actions: actions
-                         }
-                })
-                vm.events = formattedCalendarEvents;
-              });
+            .success(function (user) {
+              let calendarEvents = user.calendar.items;
+              let formattedCalendarEvents = calendarEvents.map(function (event) {
+                return {
+                  title: event.summary,
+                  color: calendarConfig.colorTypes.info,
+                  startsAt: moment(event.startTime).toDate(),
+                  endsAt: moment(event.endTime).toDate(),
+                  draggable: true,
+                  resizable: true,
+                  actions: actions
+                }
+              })
+              vm.events = formattedCalendarEvents;
+            });
           };
-
+          
+          getEvents();
           // vm.events = getEvents();
 
           // vm.events = [
