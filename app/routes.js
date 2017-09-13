@@ -19,14 +19,13 @@ module.exports = function(app, passport) {
         if (err)
             res.send(err);
         if (user) {
-            console.log('user' + user)
-            console.log('req.body' + req.body)
+            // console.log('user' + user)
+            // console.log('req.body' + req.body)
             user = req.body;
-            console.log('NEW USER')
-            console.log(user)
-            user.save(function (err) {
-                if (err) handleError(err);
-            });
+            // console.log('NEW USER')
+            // console.log(user)
+            user.save();
+
         }
     });
   });
