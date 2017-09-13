@@ -25,6 +25,10 @@ module.exports = function(app, passport) {
             // user = req.body;
             user.calendar.kind = req.body.calendar.kind;
             user.calendar.etag = req.body.calendar.etag;
+            user.calendar.summary = calendar.summary;
+            user.calendar.timeZone = calendar.timeZone;
+            user.calendar.accessRole = calendar.accessRole;
+            user.calendar.nextSyncToken = calendar.nextSyncToken;
             // console.log('NEW USER')
             // console.log(user)
             // user.save();
