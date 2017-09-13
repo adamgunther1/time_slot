@@ -10,7 +10,8 @@ module.exports = function(app, passport) {
   // api ---------------------------------------------------------------------
   // get current user
   app.get('/api/v1/current-user', function(req, res) {
-    res.send(req.isAuthenticated() ? req.user : '0');
+    // res.send(req.isAuthenticated() ? req.user : '0');
+    res.json(req.isAuthenticated() ? req.user : '0');
   });
 
   app.put('/api/v1/current-user', function(req, res){
