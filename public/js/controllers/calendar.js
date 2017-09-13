@@ -27,8 +27,8 @@ angular.module('mwl.calendar.docs', [])
                   return {
                             title: event.summary,
                             color: calendarConfig.colorTypes.info,
-                            startsAt: moment(event.startTime),
-                            endsAt: moment(event.endTime),
+                            startsAt: moment(event.startTime).toDate(),
+                            endsAt: moment(event.endTime).toDate(),
                             draggable: true,
                             resizable: true,
                             actions: actions
@@ -36,12 +36,10 @@ angular.module('mwl.calendar.docs', [])
                 });
               });
           };
-          
+
           vm.events = getEvents();
           console.log('vm.events')
           console.log(vm.events)
-          console.log('formatted calendar events')
-          console.log(formattedCalendarEvents)
           // vm.events = [
           //   {
           //     title: 'An event', 
