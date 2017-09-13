@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
     res.send(req.isAuthenticated() ? req.user : '0');
   });
 
-  app.patch('/api/v1/current-user', function(req, res){
+  app.put('/api/v1/current-user', function(req, res){
     //   console.log(req.body)
     User.findOne({'_id' : req.body._id}, function(err, user) {
         if (err)
