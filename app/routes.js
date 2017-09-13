@@ -23,8 +23,8 @@ module.exports = function(app, passport) {
             // console.log('user' + user)
             // console.log('req.body' + req.body)
             // user = req.body;
-            user.calendar.kind = req.body.kind;
-            user.calendar.etag = req.body.etag;
+            user.calendar.kind = req.body.calendar.kind;
+            user.calendar.etag = req.body.calendar.etag;
             // console.log('NEW USER')
             // console.log(user)
             // user.save();
