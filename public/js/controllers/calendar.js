@@ -18,13 +18,13 @@ angular.module('mwl.calendar.docs', [])
               // alert.show('Deleted', args.calendarEvent);
             }
           }];
-
-
+          vm.events;
+          getEvents();
           var getEvents = function () {
-            Todos.getUser()
+            return Todos.getUser()
               .success(function (user) {
                 let calendarEvents = user.calendar.items;
-                $rootScope.formattedCalendarEvents = calendarEvents.map(function (event) {
+                let formattedCalendarEvents = calendarEvents.map(function (event) {
                   return {
                             title: event.summary,
                             color: calendarConfig.colorTypes.info,
@@ -35,15 +35,11 @@ angular.module('mwl.calendar.docs', [])
                             actions: actions
                          }
                 })
-                console.log($rootScope.formattedCalendarEvents);
-                // return formattedCalendarEvents;
+                vm.events = formattedCalendarEvents;
               });
           };
 
-          vm.events = getEvents().then(function (events) {
-            return events;
-          });
-          console.log(vm.events);
+          // vm.events = getEvents();
 
           // vm.events = [
           //   {
