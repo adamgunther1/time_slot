@@ -24,8 +24,14 @@ module.exports = function(app, passport) {
             user.calendar.timeZone = req.body.calendar.timeZone;
             user.calendar.accessRole = req.body.calendar.accessRole;
             user.calendar.nextSyncToken = req.body.calendar.nextSyncToken;
-            // user.calendar.items = req.body.calendar.items;
-            user.save();
+            user.calendar.items = req.body.calendar.items;
+            user.save()
+                .success(function (err, user) {
+                    res.status(200).json(user)
+                })
+                .catch(function (err) {
+                    res.send(err);
+                });
 
         }
     });
