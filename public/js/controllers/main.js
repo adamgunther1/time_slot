@@ -25,33 +25,24 @@ angular.module('mainCtrl', [])
                                                         summary : '',
                                                         description : '',
                                                         location : '',
-                                                        creator : {
-                                                            email : '',
-                                                            displayName : ''
-                                                        },
-                                                        organizer : {
-                                                            email : ''
-                                                        },
-                                                        start : {
-                                                            dateTime : ''
-                                                        },
-                                                        end : {
-                                                            dateTime : ''
-                                                        },
+                                                        creatorEmail : '',
+                                                        organizerEmail : '',
+                                                        startTime : '',
+                                                        endTime : '',
                                                         iCalUID : '',
                                                         sequence : 0,
-                                                        attendees : [
-                                                            {
-                                                                email : '',
-                                                                displayName : '',
-                                                                optional : true,
-                                                                responseStatus : ''
-                                                            }
-                                                        ],
+                                                        // attendees : [
+                                                        //     {
+                                                        //         email : '',
+                                                        //         displayName : '',
+                                                        //         optional : true,
+                                                        //         responseStatus : ''
+                                                        //     }
+                                                        // ],
                                                         hangoutLink : '',
-                                                        reminders : {
-                                                            useDefault : false
-                                                        }
+                                                        // reminders : {
+                                                        //     useDefault : false
+                                                        // }
                                                     }
                             user.calendar.items[i].kind = calendar.items[i].kind;
                             user.calendar.items[i].etag = calendar.items[i].etag;
@@ -62,11 +53,11 @@ angular.module('mainCtrl', [])
                             user.calendar.items[i].summary = calendar.items[i].summary;
                             user.calendar.items[i].description = calendar.items[i].description;
                             user.calendar.items[i].location = calendar.items[i].location;
-                            user.calendar.items[i].creator.email = calendar.items[i].creator.email;
-                            user.calendar.items[i].creator.displayName = calendar.items[i].creator.displayName;
-                            user.calendar.items[i].organizer.email = calendar.items[i].organizer.email;
-                            user.calendar.items[i].start.dateTime = Date.parse(calendar.items[i].start.dateTime);
-                            user.calendar.items[i].end.dateTime = Date.parse(calendar.items[i].end.dateTime);
+                            user.calendar.items[i].creatorEmail = calendar.items[i].creator.email;
+                            // user.calendar.items[i].creator.displayName = calendar.items[i].creator.displayName;
+                            user.calendar.items[i].organizerEmail = calendar.items[i].organizer.email;
+                            user.calendar.items[i].startTime = Date.parse(calendar.items[i].start.dateTime);
+                            user.calendar.items[i].endTime = Date.parse(calendar.items[i].end.dateTime);
                             user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
                             user.calendar.items[i].sequence = calendar.items[i].sequence;
                             
@@ -81,7 +72,7 @@ angular.module('mainCtrl', [])
                             // user.calendar.items[i].attendees.responseStatus = calendar.items[i].attendees.responseStatus;
                            
                             user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
-                            user.calendar.items[i].reminders.useDefault = calendar.items[i].reminders.useDefault;
+                            // user.calendar.items[i].reminders.useDefault = calendar.items[i].reminders.useDefault;
                         });
                         console.log(user)
                         Todos.updateUser(user)
