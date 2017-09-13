@@ -19,6 +19,7 @@ module.exports = function(app, passport) {
         if (err)
             res.send(err);
         if (user) {
+            console.log('user' + user)
             user = req.body;
             user.save;
         }
