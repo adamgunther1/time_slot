@@ -31,14 +31,14 @@ angular.module('mainCtrl', [])
                                                         endTime : '',
                                                         iCalUID : '',
                                                         sequence : 0,
-                                                        attendees : [
-                                                            {
-                                                                email : '',
-                                                                displayName : '',
-                                                                optional : true,
-                                                                responseStatus : ''
-                                                            }
-                                                        ],
+                                                        // attendees : [
+                                                        //     {
+                                                        //         email : '',
+                                                        //         displayName : '',
+                                                        //         optional : true,
+                                                        //         responseStatus : ''
+                                                        //     }
+                                                        // ],
                                                         hangoutLink : '',
                                                         // reminders : {
                                                         //     useDefault : false
