@@ -20,7 +20,8 @@ module.exports = function(app, passport) {
             res.send(err);
         if (user) {
             console.log('user' + user)
-            user = req.body;
+            console.log('req.body' + req.body)
+            user.calendar = req.body;
             user.save;
         }
     });
