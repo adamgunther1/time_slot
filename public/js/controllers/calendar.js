@@ -33,7 +33,9 @@ angular.module('mwl.calendar.docs', [])
                             resizable: true,
                             actions: actions
                          }
-                });
+                })
+              })
+              .then(function (formattedCalendarEvents) {
                 console.log(formattedCalendarEvents);
                 return formattedCalendarEvents;
               });
