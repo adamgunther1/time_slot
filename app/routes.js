@@ -27,7 +27,7 @@ module.exports = function(app, passport) {
             // console.log('NEW USER')
             // console.log(user)
             // user.save();
-            user.save();
+            user.save;
 
         }
     });
