@@ -18,12 +18,13 @@ angular.module('mwl.calendar.docs', [])
               // alert.show('Deleted', args.calendarEvent);
             }
           }];
-          
+
+
           var getEvents = function () {
             Todos.getUser()
               .success(function (user) {
                 let calendarEvents = user.calendar.items;
-                formattedCalendarEvents = calendarEvents.map(function (event) {
+                $rootScope.formattedCalendarEvents = calendarEvents.map(function (event) {
                   return {
                             title: event.summary,
                             color: calendarConfig.colorTypes.info,
@@ -34,36 +35,16 @@ angular.module('mwl.calendar.docs', [])
                             actions: actions
                          }
                 })
-                console.log(formattedCalendarEvents);
-                return formattedCalendarEvents;
+                console.log($rootScope.formattedCalendarEvents);
+                // return formattedCalendarEvents;
               });
           };
 
-          // vm.events = getEvents();
-          vm.events = function () {
-            Todos.getUser()
-              .success(function (user) {
-                let calendarEvents = user.calendar.items;
-                formattedCalendarEvents = calendarEvents.map(function (event) {
-                  return {
-                            title: event.summary,
-                            color: calendarConfig.colorTypes.info,
-                            startsAt: moment(event.startTime).toDate(),
-                            endsAt: moment(event.endTime).toDate(),
-                            draggable: true,
-                            resizable: true,
-                            actions: actions
-                         }
-                })
-                console.log(formattedCalendarEvents);
-                return formattedCalendarEvents;
-              });
-          };;
-          vm.events();
+          vm.events = getEvents();
           console.log('vm.events');
           console.log(vm.events);
-          // console.log('formatted calendar events');
-          // console.log(formattedCalendarEvents);
+          console.log('formatted calendar events');
+          console.log($rootScope.formattedCalendarEvents);
 
           // vm.events = [
           //   {
