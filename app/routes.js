@@ -24,7 +24,9 @@ module.exports = function(app, passport) {
             user = req.body;
             console.log('NEW USER')
             console.log(user)
-            user.save;
+            user.save(function (err) {
+                if (err) handleError(err);
+            });
         }
     });
   });
