@@ -22,7 +22,8 @@ angular.module('mwl.calendar.docs', [])
           let formattedCalendarEvents = [];
           Todos.getUser()
             .success(function (user) {
-              let calendarEvents = user.items;
+              let calendarEvents = user.calendar.items;
+              console.log(calendarEvents)
               formattedCalendarEvents = calendarEvents.map(function (event) {
                 return {
                           title: event.summary,
@@ -33,9 +34,9 @@ angular.module('mwl.calendar.docs', [])
                           resizable: true,
                           actions: actions
                        }
-              })
+              });
               return formattedCalendarEvents;
-            })
+            });
           vm.events = formattedCalendarEvents;// [
           //   {
           //     title: 'An event',
