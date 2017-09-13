@@ -26,10 +26,10 @@ module.exports = function(app, passport) {
             user.calendar.nextSyncToken = req.body.calendar.nextSyncToken;
             user.calendar.items = req.body.calendar.items;
             user.save()
-                .success(function (err, user) {
+                .then(function (err, user) {
                     res.status(200).json(user)
                 })
-                .catch(function (err) {
+                .fail(function (err) {
                     res.send(err);
                 });
 
