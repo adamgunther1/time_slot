@@ -24,11 +24,11 @@ angular.module('mwl.calendar.docs', [])
                 .success(function(event) {
                   alert('deleted successfully');
                 })
-                .fail(function(err) {
+                .error(function(err) {
                   alert('event failed to delete');
                 })
               });
-              
+
             }
           }];
 
