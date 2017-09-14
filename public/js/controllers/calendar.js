@@ -15,7 +15,12 @@ angular.module('mwl.calendar.docs', [])
           }, {
             label: '<i class=\'glyphicon glyphicon-remove\'></i>',
             onClick: function(args) {
-              // alert.show('Deleted', args.calendarEvent);
+              debugger;
+              // $scope.deleteEvent = function(id) {
+              //   User.findOne({ _id: id }, function(err, user) {
+              //   });
+              // }
+              alert.show('Deleted');
             }
           }];
 
@@ -24,8 +29,9 @@ angular.module('mwl.calendar.docs', [])
             return Todos.getUser()
             .success(function (user) {
               let calendarEvents = user.calendar.items;
-              let formattedCalendarEvents = calendarEvents.map(function (event) {
+              let formattedCalendarEvents = calendarEvents.map(function (event, index) {
                 return {
+                  id: index,
                   title: event.summary,
                   color: calendarConfig.colorTypes.info,
                   startsAt: moment(event.startTime).toDate(),
@@ -42,36 +48,6 @@ angular.module('mwl.calendar.docs', [])
           };
           
           getEvents();
-          // vm.events = getEvents();
-
-          // vm.events = [
-          //   {
-          //     title: 'An event', 
-          //     color: calendarConfig.colorTypes.warning,
-          //     startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-          //     endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-          //     draggable: true,
-          //     resizable: true,
-          //     actions: actions
-          //   }, {
-          //     title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
-          //     color: calendarConfig.colorTypes.info,
-          //     startsAt: moment().subtract(1, 'day').toDate(),
-          //     endsAt: moment().add(5, 'days').toDate(),
-          //     draggable: true,
-          //     resizable: true,
-          //     actions: actions
-          //   }, {
-          //     title: 'This is a really long event title that occurs on every year',
-          //     color: calendarConfig.colorTypes.important,
-          //     startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-          //     endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-          //     recursOn: 'year',
-          //     draggable: true,
-          //     resizable: true,
-          //     actions: actions
-          //   }
-          // ];
       
           vm.cellIsOpen = true;
       
