@@ -6,6 +6,11 @@ body {
   padding-top:50px; 
 }
 
+.calendar {
+  float: left;
+  width: 60%;
+}
+
 #todo-list { 
   margin-bottom:30px; 
 }

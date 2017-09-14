@@ -36,6 +36,16 @@ angular.module('todoService', [])
                         Authorization : `Bearer ${user.google.token}`
                     }
                 })
+            },
+            createCalendarEvent : function(user, eventData) {
+                return $http({
+                    method : 'POST',
+                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.google.email}/events`,
+                    headers : {
+                        Authorization : `Bearer ${user.google.token}`
+                    },
+                    data : eventData
+                });
             }
 
         }
