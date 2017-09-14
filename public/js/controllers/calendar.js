@@ -16,8 +16,9 @@ angular.module('mwl.calendar.docs', [])
             label: '<i class=\'glyphicon glyphicon-remove\'></i>',
             onClick: function(args) {
               debugger;
-              var eventID = args.calendarEvent.id;
-              $scope.events.splice(eventID, 1);
+              var eventIndex = $scope.events.indexOf(args.calendarEvent);
+              // var eventID = args.calendarEvent.id;
+              $scope.events.splice(eventIndex, 1);
               // $scope.deleteEvent = function(id) {
               //   User.findOne({ _id: id }, function(err, user) {
               //   });
@@ -32,7 +33,7 @@ angular.module('mwl.calendar.docs', [])
               let calendarEvents = user.calendar.items;
               let formattedCalendarEvents = calendarEvents.map(function (event, index) {
                 return {
-                  id: index,
+                  // id: index,
                   title: event.summary,
                   color: calendarConfig.colorTypes.info,
                   startsAt: moment(event.startTime).toDate(),
