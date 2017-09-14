@@ -1,6 +1,6 @@
 angular.module('mwl.calendar.docs', [])
 
-  .controller('calendarCtrl', function($scope, $location, moment, calendarConfig, Todos) {
+  .controller('calendarCtrl', function($scope, moment, calendarConfig, Todos) {
 
       var vm = this;
       
@@ -35,7 +35,6 @@ angular.module('mwl.calendar.docs', [])
                 }
               })
               $scope.events = formattedCalendarEvents;
-              $location.path('/')
             });
           };
           
