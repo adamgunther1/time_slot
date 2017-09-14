@@ -7,30 +7,32 @@ angular.module('mwl.calendar.docs', [])
           //These variables MUST be set as a minimum for the calendar to work
           vm.calendarView = 'week';
           vm.viewDate = new Date();
-          var actions = [{
-            label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-            onClick: function(args) {
-              // alert.show('Edited', args.calendarEvent);
-            }
-          }, {
-            label: '<i class=\'glyphicon glyphicon-remove\'></i>',
-            onClick: function(args) {
-              var eventID = args.calendarEvent.id;
-              var eventIndex = $scope.events.indexOf(args.calendarEvent);
-              $scope.events.splice(eventIndex, 1);
-              Todos.getUser()
-              .success(function (user) {
-                Todos.deleteCalendarEvent(user, eventID)
-                .success(function(event) {
-                  alert('deleted successfully');
-                })
-                .error(function(err) {
-                  alert('event failed to delete');
-                })
-              });
+          var actions = [
+            // {
+            // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+            // onClick: function(args) {
+            //   // alert.show('Edited', args.calendarEvent);
+            // }
+            // }, 
+            {
+              label: '<i class=\'glyphicon glyphicon-remove\'></i>',
+              onClick: function(args) {
+                var eventID = args.calendarEvent.id;
+                var eventIndex = $scope.events.indexOf(args.calendarEvent);
+                $scope.events.splice(eventIndex, 1);
+                Todos.getUser()
+                .success(function (user) {
+                  Todos.deleteCalendarEvent(user, eventID)
+                  .success(function(event) {
+                    alert('deleted successfully');
+                  })
+                  .error(function(err) {
+                    alert('event failed to delete');
+                  })
+                });
 
-            }
-          }];
+              }
+            }];
 
           
           var getEvents = function () {
