@@ -18,7 +18,7 @@ angular.module('mwl.calendar.docs', [])
               // alert.show('Deleted', args.calendarEvent);
             }
           }];
-          vm.events;
+          // vm.events;
           var getEvents = function () {
             return Todos.getUser()
             .success(function (user) {
@@ -34,7 +34,7 @@ angular.module('mwl.calendar.docs', [])
                   actions: actions
                 }
               })
-              vm.events = formattedCalendarEvents;
+              $scope.events = formattedCalendarEvents;
             });
           };
           
