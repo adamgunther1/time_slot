@@ -34,7 +34,8 @@ angular.module('mwl.calendar.docs', [])
                   actions: actions
                 }
               })
-              $scope.events = formattedCalendarEvents;
+              // $scope.events = formattedCalendarEvents;
+              vm.events = formattedCalendarEvents;
             });
           };
           
