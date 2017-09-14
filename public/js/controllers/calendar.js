@@ -15,15 +15,12 @@ angular.module('mwl.calendar.docs', [])
           }, {
             label: '<i class=\'glyphicon glyphicon-remove\'></i>',
             onClick: function(args) {
-              debugger;
               var eventID = args.calendarEvent.id;
-              $scope.events.splice(eventID, 1);
-              debugger
+              $scope.events.splice(eventID, 1, 'null');
               // $scope.deleteEvent = function(id) {
               //   User.findOne({ _id: id }, function(err, user) {
               //   });
               // }
-              alert.show('Deleted');
             }
           }];
 
