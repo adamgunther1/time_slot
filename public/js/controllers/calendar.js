@@ -1,9 +1,9 @@
 angular.module('mwl.calendar.docs', [])
 
   .controller('calendarCtrl', function($scope, moment, calendarConfig, Todos) {
+      $scope.eventsLoaded = false;
 
       var vm = this;
-          $scope.eventsLoaded = false;
           //These variables MUST be set as a minimum for the calendar to work
           vm.calendarView = 'week';
           vm.viewDate = new Date();
