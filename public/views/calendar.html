@@ -1,7 +1,7 @@
-<div ng-controller="calendarCtrl as vm" ng-model="events">
+<div ng-controller="calendarCtrl as vm">
     <h2 class="text-center">{{ vm.calendarTitle }}</h2>
     <ng-include src="'../views/calendarControls.html'"></ng-include>
-    <mwl-calendar
+    <mwl-calendar  ng-model="events"
         events= {{ events }}
         view="vm.calendarView"
         view-title="vm.calendarTitle"
