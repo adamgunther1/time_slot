@@ -20,7 +20,7 @@ angular.module('mwl.calendar.docs', [])
               $scope.events.splice(eventIndex, 1);
               Todos.getUser()
               .success(function (user) {
-                Todos.deleteEvent(user, eventID);
+                Todos.deleteCalendarEvent(user, eventID);
               });
             }
           }];
