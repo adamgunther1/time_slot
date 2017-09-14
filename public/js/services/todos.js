@@ -27,6 +27,15 @@ angular.module('todoService', [])
             },
             updateUser : function(user) {
                 return $http.put(`/api/v1/current-user`, user);
+            },
+            deleteCalendarEvent : function(user, id) {
+                return $http({
+                    method : 'DELETE',
+                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.google.email}/events/${id}`,
+                    headers : {
+                        Authorization : `Bearer ${user.google.token}`
+                    }
+                })
             }
 
         }
