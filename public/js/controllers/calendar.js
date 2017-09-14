@@ -1,6 +1,6 @@
 angular.module('mwl.calendar.docs', [])
 
-  .controller('calendarCtrl', function($rootScope, moment, calendarConfig, Todos) {
+  .controller('calendarCtrl', function($scope, moment, calendarConfig, Todos) {
 
       var vm = this;
       
