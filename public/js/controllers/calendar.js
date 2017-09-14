@@ -35,8 +35,8 @@ angular.module('mwl.calendar.docs', [])
                   actions: actions
                 }
               })
-              $scope.eventsLoaded = true;
               $scope.events = formattedCalendarEvents;
+              $scope.eventsLoaded = true;
         
             });
           };
