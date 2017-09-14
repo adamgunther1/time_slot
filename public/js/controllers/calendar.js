@@ -17,7 +17,8 @@ angular.module('mwl.calendar.docs', [])
             onClick: function(args) {
               debugger;
               var eventID = args.calendarEvent.id;
-              $scope.events.splice($index, eventID);
+              $scope.events.splice(eventID, 1);
+              debugger
               // $scope.deleteEvent = function(id) {
               //   User.findOne({ _id: id }, function(err, user) {
               //   });
