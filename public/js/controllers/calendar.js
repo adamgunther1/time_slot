@@ -20,8 +20,15 @@ angular.module('mwl.calendar.docs', [])
               $scope.events.splice(eventIndex, 1);
               Todos.getUser()
               .success(function (user) {
-                Todos.deleteCalendarEvent(user, eventID);
+                Todos.deleteCalendarEvent(user, eventID)
+                .success(function(event) {
+                  alert('deleted successfully');
+                })
+                .fail(function(err) {
+                  alert('event failed to delete');
+                })
               });
+              
             }
           }];
 
