@@ -3,7 +3,7 @@ angular.module('mwl.calendar.docs', [])
   .controller('calendarCtrl', function($scope, moment, calendarConfig, Todos) {
 
       var vm = this;
-      
+          $scope.eventsLoaded = false;
           //These variables MUST be set as a minimum for the calendar to work
           vm.calendarView = 'week';
           vm.viewDate = new Date();
@@ -18,7 +18,8 @@ angular.module('mwl.calendar.docs', [])
               // alert.show('Deleted', args.calendarEvent);
             }
           }];
-          $scope.events;
+
+          
           var getEvents = function () {
             return Todos.getUser()
             .success(function (user) {
@@ -34,8 +35,9 @@ angular.module('mwl.calendar.docs', [])
                   actions: actions
                 }
               })
+              $scope.eventsLoaded = true;
               $scope.events = formattedCalendarEvents;
-              $scope.$apply();
+        
             });
           };
           
