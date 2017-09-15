@@ -72,11 +72,12 @@ body.container {
   width: 60%;
 }
 
-h5 .date {
+h5.date {
+  float: left;
   margin-left: 12%;
 }
 
-h5 .time {
+h5.time {
   float: right;
   margin-right: 12%;
 }
@@ -89,17 +90,20 @@ h5 .time {
 .form-control.event-start-time-input {
   font-size: 90%;
   float: right;
+  margin-top: 0;
 }
 
 .form-control.event-end-date-input {
   font-size: 90%;
   margin-top: 0;
+  margin-bottom: 10%;
 }
 
 .form-control.event-end-time-input {
   font-size: 90%;
   float: right;
   margin-bottom: 10%;
+  margin-top: 0;
 }
 
 .event-add-submit {
