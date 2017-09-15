@@ -22,7 +22,6 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
-    "gcal": "^1.0.0-beta",
     "googleapis": "^21.3.0",
     "method-override": "^2.3.9",
     "moment": "^2.18.1",
