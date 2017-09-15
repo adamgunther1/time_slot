@@ -37,6 +37,15 @@ body.container {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: #428bca;
   color : white;
+  padding-left : 3%;
+  padding-right : 3%;
+}
+
+.panel .form-control {
+  width: 40%;
+  height: 6%;
+  margin: 3%;
+  float: left;
 }
 
 .navbar-default {
