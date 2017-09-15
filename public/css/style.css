@@ -87,6 +87,7 @@ h5 .time {
 }
 
 .form-control.event-start-time-input {
+  font-size: 90%;
   float: right;
 }
 
@@ -96,6 +97,7 @@ h5 .time {
 }
 
 .form-control.event-end-time-input {
+  font-size: 90%;
   float: right;
   margin-bottom: 10%;
 }
