@@ -164,11 +164,14 @@ h5.time {
 }
 
 .form-control.project-schedule-input {
-  font-size: 90%;
+  /* font-size: 90%;
   float: right;
   margin-bottom: 10%;
   margin-top: 0;
-  padding: 2px;
+  padding: 2px; */
+  display: block;
+  width: 40%;
+  margin: 0 auto;
 }
 
 .event-add-submit {
@@ -183,6 +186,7 @@ h5.time {
   display: block;
   margin: 0 auto;
   margin-top: 3%;
+  clear : both;
 }
 
 .navbar-default {

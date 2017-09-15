@@ -50,8 +50,8 @@
         <div class="form-group panel-form">
             <input type="text" class="form-control text-center project-title-input" placeholder="Project Title">
             <input type="text" class="form-control text-center project-description-input" placeholder="Project Description">
-            <input type="text" class="form-control text-center project-number-input" placeholder="Project Number">
             <input type="text" class="form-control text-center project-client-input" placeholder="Client Name">
+            <input type="text" class="form-control text-center project-number-input" placeholder="Project Number">
             <input type="number" class="form-control text-center project-hours-input" placeholder="Estimate Hours">
             <h5 class="date">Start Date</h5>
             <h5 class="time">Start Time</h5>
@@ -59,10 +59,10 @@
             <input type="date" class="form-control text-center event-end-date-input" placeholder="End Date">
             <select class="project-schedule-input" name="Scheduling Preference">
                 <option value="spread out">Spread Out</option>
-                <option value="asap">ASAP</option>
+                <option value="asap" selected>ASAP</option>
             </select>
         </div>
-
+        <br>
         <button type="submit" class="btn btn-success btn-lg project-add-submit" ng-click="">Add Event</button>
     </form>
 </div>
