@@ -2,7 +2,7 @@
   "name": "time_slot",
   "version": "1.0.0",
   "engines": {
-    "node" : "8.4.0"
+    "node": "8.4.0"
   },
   "description": "Smart Scheduler",
   "main": "server.js",
