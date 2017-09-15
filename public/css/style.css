@@ -85,18 +85,21 @@ h5.time {
 .form-control.event-start-date-input {
   font-size: 90%;
   margin-top: 0;
+  padding: 2px;
 }
 
 .form-control.event-start-time-input {
   font-size: 90%;
   float: right;
   margin-top: 0;
+  padding: 2px;
 }
 
 .form-control.event-end-date-input {
   font-size: 90%;
   margin-top: 0;
   margin-bottom: 10%;
+  padding: 2px;
 }
 
 .form-control.event-end-time-input {
@@ -104,6 +107,7 @@ h5.time {
   float: right;
   margin-bottom: 10%;
   margin-top: 0;
+  padding: 2px;
 }
 
 .event-add-submit {
