@@ -97,12 +97,14 @@ h5 .time {
 
 .form-control.event-end-time-input {
   float: right;
+  margin-bottom: 10%;
 }
 
 .event-add-submit {
   float: none;
   display: block;
   margin: 0 auto;
+  margin-top: 3%;
 }
 
 .navbar-default {
