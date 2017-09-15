@@ -1,8 +1,8 @@
 // routes ======================================================================
 var Todo = require('./models/todo');
 var User = require('./models/user');
-var google = require('googleapis');
-var calendar = google.calendar('v3');
+// var google = require('googleapis');
+// var calendar = google.calendar('v3');
 
 // expose the routes to our app with module.exports
 module.exports = function(app, passport) {
