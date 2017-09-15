@@ -62,7 +62,7 @@ angular.module('mwl.calendar.docs', [])
           vm.cellIsOpen = true;
       
           vm.addEvent = function() {
-            vm.events.push({
+            $scope.events.push({
               title: 'New event',
               startsAt: moment().startOf('day').toDate(),
               endsAt: moment().endOf('day').toDate(),
