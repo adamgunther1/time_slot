@@ -19,8 +19,9 @@
 </div>
 <div class="panel">
     <h2 class="text-center">Project Manager</h2>
-    <form>
-        <div class="form-group panel-form">
+    <!-- <form class="create-event">
+        <div class="form-group panel-form"> -->
+
         <!-- <div class="panel-form"> -->
                 <!-- <input type="text" class="form-control input-lg text-center event-title-input" placeholder="Event Title" ng-model="">
                 <input type="text" class="form-control input-lg text-center event-description-input" placeholder="Event Description" ng-model="">
@@ -29,7 +30,8 @@
                 <input type="time" class="form-control input-lg text-center event-start-time-input" placeholder="Start Time" ng-model="">
                 <input type="date" class="form-control input-lg text-center event-end-date-input" placeholder="End Date" ng-model="">
                 <input type="time" class="form-control input-lg text-center event-end-time-inut" placeholder="End Time" ng-model=""> -->
-                <input type="text" class="form-control text-center event-title-input" placeholder="Event Title">
+                
+                <!-- <input type="text" class="form-control text-center event-title-input" placeholder="Event Title">
                 <input type="text" class="form-control text-center event-description-input" placeholder="Event Description">
                 <input type="text" class="form-control text-center event-location-input" placeholder="Location">
                 <h5 class="date">Start Date</h5>
@@ -43,6 +45,25 @@
         </div>
 
         <button type="submit" class="btn btn-success btn-lg event-add-submit" ng-click="">Add Event</button>
+    </form> -->
+    <form class="create-project">
+        <div class="form-group panel-form">
+            <input type="text" class="form-control text-center project-title-input" placeholder="Project Title">
+            <input type="text" class="form-control text-center project-description-input" placeholder="Project Description">
+            <input type="text" class="form-control text-center project-number-input" placeholder="Project Number">
+            <input type="text" class="form-control text-center project-client-input" placeholder="Client Name">
+            <input type="number" class="form-control text-center project-hours-input" placeholder="Estimate Hours">
+            <h5 class="date">Start Date</h5>
+            <h5 class="time">Start Time</h5>
+            <input type="date" class="form-control text-center event-start-date-input" placeholder="Start Date">
+            <input type="date" class="form-control text-center event-end-date-input" placeholder="End Date">
+            <select class="project-schedule-input" name="Scheduling Preference">
+                <option value="spread out">Spread Out</option>
+                <option value="asap">ASAP</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg project-add-submit" ng-click="">Add Event</button>
     </form>
 </div>
 
