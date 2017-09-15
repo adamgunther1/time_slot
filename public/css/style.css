@@ -48,6 +48,21 @@ body.container {
   float: left;
 }
 
+.event-title-input {
+  float: none;
+  margin: 0 auto;
+}
+
+.event-description-input {
+  float: none;
+  margin: 0 auto;
+}
+
+.event-location-input {
+  float: none;
+  margin: 0 auto;
+}
+
 .navbar-default {
   background-color : white;
   border-color : white;
