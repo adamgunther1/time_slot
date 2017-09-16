@@ -9,12 +9,6 @@ angular.module('mainCtrl', [])
                 $scope.loggedIn = true;
                 Todos.getCalendar(user)
                     .success(function (calendar) {
-                        user.calendar.kind = calendar.kind;
-                        user.calendar.etag = calendar.etag;
-                        user.calendar.summary = calendar.summary;
-                        user.calendar.timeZone = calendar.timeZone;
-                        user.calendar.accessRole = calendar.accessRole;
-                        user.calendar.nextSyncToken = calendar.nextSyncToken;
                         calendar.items.forEach(function (item, i) {
                             user.calendar.items[i] = {  kind : '',
                                                         etag : '',
@@ -31,18 +25,9 @@ angular.module('mainCtrl', [])
                                                         endTime : '',
                                                         iCalUID : '',
                                                         sequence : 0,
-                                                        // attendees : [
-                                                        //     {
-                                                        //         email : '',
-                                                        //         displayName : '',
-                                                        //         optional : true,
-                                                        //         responseStatus : ''
-                                                        //     }
-                                                        // ],
                                                         hangoutLink : '',
-                                                        // reminders : {
-                                                        //     useDefault : false
-                                                        // }
+                                                        // attendees : [ { email : '', displayName : '', optional : true, responseStatus : '' } ],
+                                                        // reminders : { useDefault : false }
                                                     }
                             user.calendar.items[i].kind = calendar.items[i].kind;
                             user.calendar.items[i].etag = calendar.items[i].etag;
@@ -54,25 +39,16 @@ angular.module('mainCtrl', [])
                             user.calendar.items[i].description = calendar.items[i].description;
                             user.calendar.items[i].location = calendar.items[i].location;
                             user.calendar.items[i].creatorEmail = calendar.items[i].creator.email;
-                            // user.calendar.items[i].creator.displayName = calendar.items[i].creator.displayName;
                             user.calendar.items[i].organizerEmail = calendar.items[i].organizer.email;
                             user.calendar.items[i].startTime = Date.parse(calendar.items[i].start.dateTime);
                             user.calendar.items[i].endTime = Date.parse(calendar.items[i].end.dateTime);
                             user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
                             user.calendar.items[i].sequence = calendar.items[i].sequence;
-                            
+                            user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
                             // user.calendar.items[i].attendees = [];
                             // calendar.items[i].attendees.forEach(function (attendee, j) {
                             //     user.calendar.items[i].attendees[j] = attendee; 
                             // })
-
-                            // user.calendar.items[i].attendees.email = calendar.items[i].attendees.email;
-                            // user.calendar.items[i].attendees.displayName = calendar.items[i].attendees.displayName;
-                            // user.calendar.items[i].attendees.optional = calendar.items[i].attendees.optional;
-                            // user.calendar.items[i].attendees.responseStatus = calendar.items[i].attendees.responseStatus;
-                           
-                            user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
-                            // user.calendar.items[i].reminders.useDefault = calendar.items[i].reminders.useDefault;
                         });
                         Todos.updateUser(user)
                     });
