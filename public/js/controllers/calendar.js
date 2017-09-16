@@ -54,6 +54,8 @@ angular.module('mwl.calendar.docs', [])
               })
               $scope.events = formattedCalendarEvents;
               $scope.eventsLoaded = true;
+
+              let projects = user.projects
         
             });
           };
@@ -71,7 +73,11 @@ angular.module('mwl.calendar.docs', [])
             }
           }
 
-          $scope.projects = [];
+          getEvents();
+
+          var getProjects = function () {
+
+          };
 
           var createProject = function (project, events) {
             return {
@@ -88,7 +94,7 @@ angular.module('mwl.calendar.docs', [])
             }
           };
 
-          getEvents();
+          getProjects();
       
           vm.cellIsOpen = true;
       
