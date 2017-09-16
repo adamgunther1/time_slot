@@ -30,18 +30,7 @@ var userSchema = mongoose.Schema({
         endTime : Date,
         iCalUID : String,
         sequence : Number,
-        // attendees : [
-        //   {
-        //     email : String,
-        //     displayName : String,
-        //     optional : Boolean,
-        //     responseStatus : String
-        //   }
-        // ],
         hangoutLink : String
-        // reminders : {
-        //   useDefault : Boolean
-        // }
       }
     ]
   }

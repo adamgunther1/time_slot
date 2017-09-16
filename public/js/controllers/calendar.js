@@ -40,23 +40,54 @@ angular.module('mwl.calendar.docs', [])
             .success(function (user) {
               let calendarEvents = user.calendar.items;
               let formattedCalendarEvents = calendarEvents.map(function (event, index) {
-                return {
-                  id: event.id,
-                  title: event.summary,
-                  color: calendarConfig.colorTypes.info,
-                  startsAt: moment(event.startTime).toDate(),
-                  endsAt: moment(event.endTime).toDate(),
-                  draggable: true,
-                  resizable: true,
-                  actions: actions
-                }
+                // return {
+                //   id: event.id,
+                //   title: event.summary,
+                //   color: calendarConfig.colorTypes.info,
+                //   startsAt: moment(event.startTime).toDate(),
+                //   endsAt: moment(event.endTime).toDate(),
+                //   draggable: true,
+                //   resizable: true,
+                //   actions: actions
+                // }
+                return createEvent(event, index);
               })
               $scope.events = formattedCalendarEvents;
               $scope.eventsLoaded = true;
         
             });
           };
-          
+
+          var createEvent = function (event, index) {
+            return {
+              id: event.id,
+              title: event.summary,
+              color: calendarConfig.colorTypes.info,
+              startsAt: moment(event.startTime).toDate(),
+              endsAt: moment(event.endTime).toDate(),
+              draggable: true,
+              resizable: true,
+              actions: actions
+            }
+          }
+
+          $scope.projects = [];
+
+          var createProject = function (project, events) {
+            return {
+              title : project.title,
+              description : project.description,
+              client : project.client,
+              color : project.color,
+              jobID : project.jobID,
+              hours : project.hours,
+              startTime : project.startTime,
+              endTime : project.endTime,
+              schedulePreference : project.schedulePreference,
+              events : events
+            }
+          };
+
           getEvents();
       
           vm.cellIsOpen = true;
@@ -64,9 +95,9 @@ angular.module('mwl.calendar.docs', [])
           vm.addEvent = function() {
             $scope.events.push({
               title: 'New event',
+              color: calendarConfig.colorTypes.important,
               startsAt: moment().startOf('day').toDate(),
               endsAt: moment().endOf('day').toDate(),
-              color: calendarConfig.colorTypes.important,
               draggable: true,
               resizable: true
             });
