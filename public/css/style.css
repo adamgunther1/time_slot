@@ -89,8 +89,7 @@ body.container {
 .form-control.project-number-input {
   float: none;
   margin: 0 auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-bottom: 6%;
   width: 60%;
 }
 
@@ -160,11 +159,11 @@ h5.time {
   padding: 2px;
 }
 
-.form-control.project-schedule-input {
+.project-schedule-input {
   display: block;
   width: 50%;
   margin: 0 auto;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   margin-top: 40%;
   height: 35px;
 }
@@ -179,7 +178,6 @@ h5.time {
   float: none;
   display: block;
   margin: 0 auto;
-  margin-top: 6%;
   clear : both;
 }
 
