@@ -7,29 +7,32 @@ var userSchema = mongoose.Schema({
     email: String,
     name: String
   },
-  projects : {
-    title : String,
-    description : String,
-    client : String,
-    color : String,
-    jobId : String,
-    hours : Number,
-    startTime : Date,
-    endTime : Date,
-    schedulePreference : String,
-    events : [
-      {
-        id : String,
-        title : String,
-        color: String,
-        startsAt: Date,
-        endsAt: Date,
-        draggable: Boolean,
-        resizable: Boolean,
-        actions: Array
-      }
-    ] 
-  },
+  freeTime : Object,
+  projects : [
+    {
+      title : String,
+      description : String,
+      client : String,
+      color : String,
+      jobId : String,
+      hours : Number,
+      startTime : Date,
+      endTime : Date,
+      schedulePreference : String,
+      events : [
+        {
+          id : String,
+          title : String,
+          color: String,
+          startsAt: Date,
+          endsAt: Date,
+          draggable: Boolean,
+          resizable: Boolean,
+          actions: Array
+        }
+      ] 
+    }
+  ],
   calendar : {
     kind : String,
     etag : String,

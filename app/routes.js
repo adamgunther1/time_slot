@@ -25,6 +25,7 @@ module.exports = function(app, passport) {
             user.calendar.accessRole = req.body.calendar.accessRole;
             user.calendar.nextSyncToken = req.body.calendar.nextSyncToken;
             user.calendar.items = req.body.calendar.items;
+            user.freeTime = req.body.freeTime;
             user.save(function (err, user) {
                 if (err) {
                     res.send(err);

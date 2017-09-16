@@ -34,23 +34,59 @@ angular.module('mwl.calendar.docs', [])
               }
             }];
 
+          var getDatesInRange = function(t1, t2, interval) {
+            Todos.getUser()
+            .success(function (user) {
+
+              var dates = {};
+              while ( t1.isBefore(t2) ) {
+                if ( t1.format().includes('18:00:00') ) {
+                  t1.add(14, 'hours')
+                }
+                dates[t1.format()] = 'free';
+                t1.add(interval, "hours");
+              }
+              user.freeTime = dates;
+              Todos.updateUser(user)
+              .success(function (user) {
+                blockOffTimes();
+              })
+            })
+          };
+
+          var blockOffTimes = function() {
+            Todos.getUser()
+            .success(function (user) {
+              let busyTimes = user.calendar.items.map(function (event) {
+                let startTime = moment(event.startTime).startOf('hour');
+                let endTime = moment(event.endTime).startOf('hour');
+                let busyHours = moment(endTime).diff(moment(startTime), 'hours');
+
+                for ( var i=0; i < busyHours; i++ ) {
+                  user.freeTime[startTime] = 'busy';
+                  startTime = startTime.add(1, 'hours');
+                }
+                Todos.updateUser(user);
+              })
+            })            
+          };
+          
+          getDatesInRange(moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
+
+          // var getFreeTime = function () {
+          //   return Todos.getUser()
+          //   .success(function (user) {
+          //     user.freeTime
+          //   })
+          // };
+
           
           var getEvents = function () {
             return Todos.getUser()
             .success(function (user) {
               let calendarEvents = user.calendar.items;
               let formattedCalendarEvents = calendarEvents.map(function (event, index) {
-                // return {
-                //   id: event.id,
-                //   title: event.summary,
-                //   color: calendarConfig.colorTypes.info,
-                //   startsAt: moment(event.startTime).toDate(),
-                //   endsAt: moment(event.endTime).toDate(),
-                //   draggable: true,
-                //   resizable: true,
-                //   actions: actions
-                // }
-                return createEvent(event, index);
+                return createEvent(event);
               })
               $scope.events = formattedCalendarEvents;
               $scope.eventsLoaded = true;
@@ -60,7 +96,18 @@ angular.module('mwl.calendar.docs', [])
             });
           };
 
-          var createEvent = function (event, index) {
+          var postEvent = function (eventData) {
+            return Todos.getUser()
+            .success(function (user) {
+              Todos.createCalendarEvent(user, eventData)
+              .success(function (user) {
+                let newEvent = createEvent(eventData);
+                $scope.events.push(newEvent);
+              })
+            })
+          };
+
+          var createEvent = function (event) {
             return {
               id: event.id,
               title: event.summary,
@@ -71,15 +118,28 @@ angular.module('mwl.calendar.docs', [])
               resizable: true,
               actions: actions
             }
-          }
+          };
 
           getEvents();
 
           var getProjects = function () {
-
+            return Todos.getUser()
+            .success(function (user) {
+              $scope.projects = user.projects;
+            })
           };
 
-          var createProject = function (project, events) {
+          var postProject = function (projectData) {
+            return Todos.getUser()
+            .success(function (user) {
+                let newProject = createProject(projectData);
+                let updatedUser = user.projects.push(newProject);
+                $scope.projects.push(newProject);
+                Todos.updateUser(updatedUser);
+            })
+          };
+
+          var createProject = function (project) {
             return {
               title : project.title,
               description : project.description,
@@ -90,7 +150,7 @@ angular.module('mwl.calendar.docs', [])
               startTime : project.startTime,
               endTime : project.endTime,
               schedulePreference : project.schedulePreference,
-              events : events
+              events : project.events
             }
           };
 
@@ -105,7 +165,8 @@ angular.module('mwl.calendar.docs', [])
               startsAt: moment().startOf('day').toDate(),
               endsAt: moment().endOf('day').toDate(),
               draggable: true,
-              resizable: true
+              resizable: true,
+              actions: actions
             });
           };
       

@@ -47,6 +47,5 @@ angular.module('todoService', [])
                     data : eventData
                 });
             }
-
         }
     }]);
