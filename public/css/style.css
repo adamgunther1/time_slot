@@ -165,7 +165,7 @@ h5.time {
   width: 50%;
   margin: 0 auto;
   margin-bottom: 10%;
-  margin-top: 45%;
+  margin-top: 40%;
   height: 35px;
 }
 
@@ -173,7 +173,6 @@ h5.time {
   float: none;
   display: block;
   margin: 0 auto;
-  margin-top: 3%;
 }
 
 .project-add-submit {
