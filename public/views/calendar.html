@@ -48,23 +48,23 @@
     </form> -->
     <form class="create-project">
         <div class="form-group panel-form">
-            <input type="text" class="form-control text-center project-title-input" placeholder="Project Title">
-            <input type="text" class="form-control text-center project-description-input" placeholder="Project Description">
-            <input type="text" class="form-control text-center project-client-input" placeholder="Client Name">
-            <input type="text" class="form-control text-center project-number-input" placeholder="Project Number">
-            <input type="number" class="form-control text-center project-hours-input" placeholder="Estimate Hours">
+            <input type="text" class="form-control text-center project-title-input" placeholder="Project Title" ng-model="projectData.title">
+            <input type="text" class="form-control text-center project-description-input" placeholder="Project Description"ng-model="projectData.description">
+            <input type="text" class="form-control text-center project-client-input" placeholder="Client Name" ng-model="projectData.client">
+            <input type="text" class="form-control text-center project-number-input" placeholder="Project ID" ng-model="projectData.jobID">
+            <input type="number" class="form-control text-center project-hours-input" placeholder="Estimate Hours" ng-model="projectData.hours">
             <h5 class="date">Start Date</h5>
             <h5 class="date end-date-no-time">End Date</h5>
-            <input type="date" class="form-control text-center event-start-date-input" placeholder="Start Date">
-            <input type="date" class="form-control text-center event-end-date-input" placeholder="End Date">
-            <select class="project-schedule-input" name="Scheduling Preference">
+            <input type="date" class="form-control text-center event-start-date-input" placeholder="Start Date" ng-model="projectData.startTime">
+            <input type="date" class="form-control text-center event-end-date-input" placeholder="End Date" ng-model="projectData.endTime">
+            <select class="project-schedule-input" name="Scheduling Preference" ng-model="projectData.schedulePreference"> 
                 <h5>Scheduling Preference</h5>
-                <option value="spread out">Spread Out</option>
+                <option value="spreadOut">Spread Out</option>
                 <option value="asap" selected>ASAP</option>
             </select>
         </div>
         <br>
-        <button type="submit" class="btn btn-success btn-lg project-add-submit" ng-click="">Create Project</button>
+        <button type="submit" class="btn btn-success btn-lg project-add-submit" ng-click="smartScheduler()">Create Project</button>
     </form>
 </div>
 
