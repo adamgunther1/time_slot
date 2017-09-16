@@ -63,7 +63,7 @@ angular.module('mwl.calendar.docs', [])
                 let busyHours = moment(endTime).diff(moment(startTime), 'hours');
 
                 for ( var i=0; i < busyHours; i++ ) {
-                  user.freeTime[startTime] = 'busy';
+                  user.freeTime[startTime.format()] = 'busy';
                   startTime = startTime.add(1, 'hours');
                 }
                 Todos.updateUser(user);
