@@ -117,7 +117,8 @@ angular.module('mwl.calendar.docs', [])
       $scope.projectData = {};
 
       var smartScheduler = function () {
-        console.log($scope.projectData)
+        console.log('--------PROJECT DATA --------');
+        console.log($scope.projectData);
         let hours = $scope.projectData.hours;
         let schedulePreference = $scope.projectData.schedulePreference;
         let startTime = $scope.projectData.startTime;
