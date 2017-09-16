@@ -60,14 +60,13 @@ body.container {
   float: none;
   margin: 0 auto;
   margin-top: 10%;
-  margin-bottom: 3%;
+  margin-bottom: 6%;
   width: 60%;
 }
 
 .form-control.event-description-input {
   float: none;
   margin: 0 auto;
-  margin-top: 6%;
   margin-bottom: 6%;
   width: 90%;
 }
@@ -83,7 +82,6 @@ body.container {
 .form-control.event-location-input {
   float: none;
   margin: 0 auto;
-  margin-top: 3%;
   margin-bottom: 3%;
   width: 60%;
 }
@@ -99,16 +97,14 @@ body.container {
 .form-control.project-client-input {
   float: none;
   margin: 0 auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-bottom: 6%;
   width: 60%;
 }
 
 .form-control.project-hours-input {
   float: none;
   margin: 0 auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-bottom: 6%;
   width: 60%;
 }
 
@@ -151,8 +147,9 @@ h5.time {
 .form-control.project-end-date-input {
   font-size: 90%;
   margin-top: 0;
-  margin-bottom: 10%;
+  margin-bottom: 6%;
   padding: 2px;
+  float: right;
 }
 
 .form-control.event-end-time-input {
@@ -164,14 +161,12 @@ h5.time {
 }
 
 .form-control.project-schedule-input {
-  /* font-size: 90%;
-  float: right;
-  margin-bottom: 10%;
-  margin-top: 0;
-  padding: 2px; */
   display: block;
-  width: 40%;
+  width: 50%;
   margin: 0 auto;
+  margin-bottom: 10%;
+  margin-top: 45%;
+  height: 35px;
 }
 
 .event-add-submit {
@@ -185,7 +180,7 @@ h5.time {
   float: none;
   display: block;
   margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 6%;
   clear : both;
 }
 
