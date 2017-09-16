@@ -26,7 +26,7 @@ var userSchema = mongoose.Schema({
         endsAt: Date,
         draggable: Boolean,
         resizable: Boolean,
-        actions: actions
+        actions: Array
       }
     ] 
   },
