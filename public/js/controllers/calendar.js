@@ -120,7 +120,7 @@ angular.module('mwl.calendar.docs', [])
       });
     }
 
-      var postEvent = function (user, eventData) {
+      var postEvent = function (eventData) {
           Calendars.createCalendarEvent(userAuth, eventData)
           .success(function (event) {
             let newEvent = {
@@ -206,7 +206,7 @@ angular.module('mwl.calendar.docs', [])
                 "summary" : title,
                 "description" : description
               };
-              postEvent(user, eventData);
+              postEvent(eventData);
             })
           }
         })
