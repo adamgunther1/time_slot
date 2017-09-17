@@ -15,6 +15,7 @@ angular.module('mwl.calendar.docs', [])
             var eventID = args.calendarEvent.id;
             var eventIndex = $scope.events.indexOf(args.calendarEvent);
             $scope.events.splice(eventIndex, 1);
+
             Calendars.deleteCalendarEvent(userAuth, eventID)
             .success(function(event) {
               alert('deleted successfully');
@@ -65,6 +66,7 @@ angular.module('mwl.calendar.docs', [])
           Calendars.getCalendar(userAuth)
           .success(function (calendar) {
               calendar.items.forEach(function (item, i) {
+                  user.calendar.items = [];
                   user.calendar.items[i] = {  kind : '',
                                               etag : '',
                                               id : '',
@@ -106,8 +108,7 @@ angular.module('mwl.calendar.docs', [])
                   // })
               });
 
-                let calendarEvents = user.calendar.items;
-                let formattedCalendarEvents = calendarEvents.map(function (event, index) {
+                let formattedCalendarEvents = user.calendar.items.map(function (event, index) {
                   return createEvent(event);
                 })
                 $scope.events = formattedCalendarEvents;
