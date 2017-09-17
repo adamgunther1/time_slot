@@ -66,18 +66,19 @@ angular.module('mwl.calendar.docs', [])
               Calendars.getCalendar(userAuth)
               .success(function (calendar) {
                 fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(calendar.items);
-                debugger;
-                // while (calendar.nextPageToken) {
-                //   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
-                //   .success(function (nextCalendar) {
-                //     fullyLoadedCalendarItems.concat(nextCalendar.items);
-                //     if (nextCalendar.nextPageToken) {
-                //       calendar.nextPageToken = nextCalendar.nextPageToken;
-                //     } else {
-                //       calendar.nextPageToken = false;
-                //     }
-                //   })
-                // }
+
+                while (calendar.nextPageToken) {
+                  Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
+                  .success(function (nextCalendar) {
+                    fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
+                    if (nextCalendar.nextPageToken) {
+                      calendar.nextPageToken = nextCalendar.nextPageToken;
+                      debugger;
+                    } else {
+                      calendar.nextPageToken = false;
+                    }
+                  })
+                }
 
                 fullyLoadedCalendarItems.forEach(function (item, i) {
                       // user.calendar.items = [];
