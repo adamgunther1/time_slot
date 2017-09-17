@@ -42,10 +42,10 @@ module.exports = function(app, passport) {
                                 if (user) {
                                     res.json(user);
                                 }
-                            })
-                        }
-                    })
-                }
+                            // })
+                        // }
+                    // })
+                // }
             })
         }
     });
