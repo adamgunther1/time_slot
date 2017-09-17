@@ -66,7 +66,7 @@ angular.module('mwl.calendar.docs', [])
           Calendars.getCalendar(userAuth)
           .success(function (calendar) {
               calendar.items.forEach(function (item, i) {
-                  user.calendar.items = [];
+                  // user.calendar.items = [];
                   user.calendar.items[i] = {  kind : '',
                                               etag : '',
                                               id : '',
