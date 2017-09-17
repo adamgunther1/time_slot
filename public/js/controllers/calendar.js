@@ -55,7 +55,7 @@ angular.module('mwl.calendar.docs', [])
       };
 
       var blockOffTimes = function (user) {
-        let busyTimes = user.calendar.items.map(function (event) {
+        let busyTimes = user.calendar.items.forEach(function (event) {
           let startTime = moment(event.startTime).startOf('hour');
           let endTime = moment(event.endTime).startOf('hour');
           let busyHours = moment(endTime).diff(moment(startTime), 'hours');
@@ -64,8 +64,8 @@ angular.module('mwl.calendar.docs', [])
             user.freeTime[startTime.format()] = 'busy';
             startTime = startTime.add(1, 'hours');
           }
-          Todos.updateUser(user);
-        })         
+        })  
+        Todos.updateUser(user);
       };
       
 
