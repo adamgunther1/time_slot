@@ -178,7 +178,9 @@ angular.module('mwl.calendar.docs', [])
         .success(function (user) {
           let availability = user.freeTime;
           let availableHours = [];
-          debugger;
+
+// figure out how to add onto correct days / hours . Get index maybe?
+
           let iterator = 0;
           let i = 0;
           do {
