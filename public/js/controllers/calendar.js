@@ -131,11 +131,7 @@ angular.module('mwl.calendar.docs', [])
               resizable: true,
               actions: actions
             }
-
-            // $scope.events.push(newEvent);
-
           vm.events[vm.events.length] = newEvent;
-          // $route.reload();
 
 
           })
@@ -190,6 +186,7 @@ angular.module('mwl.calendar.docs', [])
             let hour = Object.keys(availability)[iterator];
             if ( availability[hour] === 'free' ) {
               availableHours.push(hour);
+              user.freeTime[hour] = 'busy';
               i++;
               iterator++;
             } else {
@@ -212,6 +209,7 @@ angular.module('mwl.calendar.docs', [])
                 "description" : description
               };
               postEvent(eventData);
+              Calendars.updateUser(user);
             })
             $route.reload();
             // $scope.events <<--- could be the key to return after postEvent

@@ -4,7 +4,7 @@ html {
 
 body { 
   margin-top : 0;
-  padding-top : 20px; 
+  padding-top : 15px; 
 }
 
 body.container {
@@ -33,7 +33,7 @@ body.container {
 .calendar {
   float: left;
   width: 60%;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .panel {
