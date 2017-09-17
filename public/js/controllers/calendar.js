@@ -64,6 +64,7 @@ angular.module('mwl.calendar.docs', [])
           user.calendar.items = [];
           Calendars.getCalendar(userAuth)
           .success(function (calendar) {
+              debugger;
               calendar.items.forEach(function (item, i) {
                   // user.calendar.items = [];
                   user.calendar.items[i] = {  kind : '',
@@ -111,6 +112,7 @@ angular.module('mwl.calendar.docs', [])
                   return createEvent(event);
                 })
                 vm.events = formattedCalendarEvents;
+                debugger;
                 $scope.projects = user.projects;
                 $scope.eventsLoaded = true;  
                 getDatesInRange(user, moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
