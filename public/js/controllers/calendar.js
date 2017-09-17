@@ -63,6 +63,7 @@ angular.module('mwl.calendar.docs', [])
         .success(function (user) {
           userAuth.userToken = user.google.token;
           userAuth.userEmail = user.google.email;
+          user.calendar.items = [];
           Calendars.getCalendar(userAuth)
           .success(function (calendar) {
               calendar.items.forEach(function (item, i) {
