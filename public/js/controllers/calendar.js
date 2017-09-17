@@ -37,15 +37,18 @@ angular.module('mwl.calendar.docs', [])
       var getDatesInRange = function(t1, t2, interval) {
         Todos.getUser()
         .success(function (user) {
-
           var dates = {};
           while ( t1.isBefore(t2) ) {
+            if ( t1.format().includes('00:00:00') ) {
+              t1.add(8, 'hours')
+            }
             if ( t1.format().includes('18:00:00') ) {
               t1.add(14, 'hours')
             }
             dates[t1.format()] = 'free';
             t1.add(interval, "hours");
           }
+
           user.freeTime = dates;
           Todos.updateUser(user)
           .success(function (user) {
@@ -149,7 +152,7 @@ angular.module('mwl.calendar.docs', [])
               i++;
               iterator++;
             } else {
-              iterator++
+              iterator++;
             }
           }
           debugger;
