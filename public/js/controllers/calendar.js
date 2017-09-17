@@ -34,26 +34,23 @@ angular.module('mwl.calendar.docs', [])
           }
         }];
 
-      var getDatesInRange = function(t1, t2, interval) {
-        Todos.getUser()
-        .success(function (user) {
-          var dates = {};
-          while ( t1.isBefore(t2) ) {
-            if ( t1.format().includes('00:00:00') ) {
-              t1.add(8, 'hours')
-            }
-            if ( t1.format().includes('18:00:00') ) {
-              t1.add(14, 'hours')
-            }
-            dates[t1.format()] = 'free';
-            t1.add(interval, "hours");
+      var getDatesInRange = function(user, t1, t2, interval) {
+        var dates = {};
+        while ( t1.isBefore(t2) ) {
+          if ( t1.format().includes('00:00:00') ) {
+            t1.add(8, 'hours')
           }
+          if ( t1.format().includes('18:00:00') ) {
+            t1.add(14, 'hours')
+          }
+          dates[t1.format()] = 'free';
+          t1.add(interval, "hours");
+        }
 
-          user.freeTime = dates;
-          Todos.updateUser(user)
-          .success(function (user) {
-            blockOffTimes(user);
-          })
+        user.freeTime = dates;
+        Todos.updateUser(user)
+        .success(function (user) {
+          blockOffTimes(user);
         })
       };
 
@@ -129,8 +126,8 @@ angular.module('mwl.calendar.docs', [])
                 $scope.events = formattedCalendarEvents;
                 $scope.eventsLoaded = true;
       
-                let projects = user.projects
-
+                // let projects = user.projects
+                getDatesInRange(user, moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
               })
     
         });
@@ -170,7 +167,6 @@ angular.module('mwl.calendar.docs', [])
       };
 
       getEvents();
-      getDatesInRange(moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
 
       $scope.projectData = {};
 
