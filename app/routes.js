@@ -27,25 +27,9 @@ module.exports = function(app, passport) {
                 if (err) {
                     res.send(err);
                 }
-                // if (user) {
-                //     user.calendar.items = req.body.calendar.items;
-                //     user.save(function (err, user) {
-                //         if (err) {
-                //             res.send(err);
-                //         }
-                //         if (user) {
-                //             user.freeTime = req.body.freeTime;
-                //             user.save(function (err, user) {
-                //                 if (err) {
-                //                     res.send(err);
-                //                 }
-                                if (user) {
-                                    res.json(user);
-                                }
-                            // })
-                        // }
-                    // })
-                // }
+                if (user) {
+                    res.json(user);
+                }
             })
         }
     });

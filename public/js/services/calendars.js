@@ -20,9 +20,9 @@ angular.module('calendarService', [])
             deleteCalendarEvent : function(user, id) {
                 return $http({
                     method : 'DELETE',
-                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.google.email}/events/${id}`,
+                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events/${id}`,
                     headers : {
-                        Authorization : `Bearer ${user.google.token}`
+                        Authorization : `Bearer ${user.userToken}`
                     }
                 })
             },

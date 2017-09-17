@@ -2,35 +2,26 @@ angular.module('mwl.calendar.docs', [])
 
   .controller('calendarCtrl', function($scope, moment, calendarConfig, Calendars) {
       $scope.eventsLoaded = false;
+      var userAuth = { userToken : '', userEmail : '' };
 
       var vm = this;
       //These variables MUST be set as a minimum for the calendar to work
       vm.calendarView = 'week';
       vm.viewDate = new Date();
       var actions = [
-        // {
-        // label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-        // onClick: function(args) {
-        //   // alert.show('Edited', args.calendarEvent);
-        // }
-        // }, 
         {
           label: '<i class=\'glyphicon glyphicon-remove\'></i>',
           onClick: function(args) {
             var eventID = args.calendarEvent.id;
             var eventIndex = $scope.events.indexOf(args.calendarEvent);
             $scope.events.splice(eventIndex, 1);
-            Calendars.getUser()
-            .success(function (user) {
-              Calendars.deleteCalendarEvent(user, eventID)
-              .success(function(event) {
-                alert('deleted successfully');
-              })
-              .error(function(err) {
-                alert('event failed to delete');
-              })
-            });
-
+            Calendars.deleteCalendarEvent(userAuth, eventID)
+            .success(function(event) {
+              alert('deleted successfully');
+            })
+            .error(function(err) {
+              alert('event failed to delete' + err );
+            })
           }
         }];
 
@@ -48,10 +39,7 @@ angular.module('mwl.calendar.docs', [])
         }
 
         user.freeTime = dates;
-        // Calendars.updateUser(user)
-        // .success(function (user) {
-          blockOffTimes(user);
-        // })
+        blockOffTimes(user);
       };
 
       var blockOffTimes = function (user) {
@@ -72,7 +60,8 @@ angular.module('mwl.calendar.docs', [])
       var getEvents = function () {
         return Calendars.getUser()
         .success(function (user) {
-
+          userAuth.userToken = user.google.token;
+          userAuth.userEmail = user.google.email;
           Calendars.getCalendar(user)
           .success(function (calendar) {
               calendar.items.forEach(function (item, i) {
