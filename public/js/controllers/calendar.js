@@ -2,6 +2,7 @@ angular.module('mwl.calendar.docs', [])
 
   .controller('calendarCtrl', function($scope, moment, calendarConfig, Calendars) {
       $scope.eventsLoaded = false;
+      $scope.events = [];
       var userAuth = { userToken : '', userEmail : '' };
 
       var vm = this;
