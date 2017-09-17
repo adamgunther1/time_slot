@@ -186,7 +186,7 @@ angular.module('mwl.calendar.docs', [])
             let hour = Object.keys(availability)[iterator];
             if ( availability[hour] === 'free' ) {
               availableHours.push(hour);
-              user.freeTime[hour] = 'busy';
+              // user.freeTime[hour] = 'busy';
               i++;
               iterator++;
             } else {
@@ -197,8 +197,7 @@ angular.module('mwl.calendar.docs', [])
           let workHoursToSpare = moment(endTime).diff(moment(availableHours.slice(-1)[0]), 'hours') * (10/24);
           if ( (hours < workHoursBeforeAvailabityCheck) && (workHoursToSpare > 0 ) ) {
             availableHours.forEach(function (hour) {
-              debugger;
-              let endHour = hour.replace(':00:00', ':59:59');
+              let endHour = moment(hour).add(1, 'hours').format();
               let eventData = {
                 "start" : {
                   "dateTime" : hour
