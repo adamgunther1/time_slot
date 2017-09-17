@@ -121,7 +121,6 @@ angular.module('mwl.calendar.docs', [])
       var postEvent = function (eventData) {
           Calendars.createCalendarEvent(userAuth, eventData)
           .success(function (event) {
-            debugger;
             let newEvent = {
               id: event.id,
               title: event.summary,
