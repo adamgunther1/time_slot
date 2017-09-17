@@ -52,26 +52,23 @@ angular.module('mwl.calendar.docs', [])
           user.freeTime = dates;
           Todos.updateUser(user)
           .success(function (user) {
-            blockOffTimes();
+            blockOffTimes(user);
           })
         })
       };
 
-      var blockOffTimes = function() {
-        Todos.getUser()
-        .success(function (user) {
-          let busyTimes = user.calendar.items.map(function (event) {
-            let startTime = moment(event.startTime).startOf('hour');
-            let endTime = moment(event.endTime).startOf('hour');
-            let busyHours = moment(endTime).diff(moment(startTime), 'hours');
+      var blockOffTimes = function (user) {
+        let busyTimes = user.calendar.items.map(function (event) {
+          let startTime = moment(event.startTime).startOf('hour');
+          let endTime = moment(event.endTime).startOf('hour');
+          let busyHours = moment(endTime).diff(moment(startTime), 'hours');
 
-            for ( var i=0; i < busyHours; i++ ) {
-              user.freeTime[startTime.format()] = 'busy';
-              startTime = startTime.add(1, 'hours');
-            }
-            Todos.updateUser(user);
-          })
-        })            
+          for ( var i=0; i < busyHours; i++ ) {
+            user.freeTime[startTime.format()] = 'busy';
+            startTime = startTime.add(1, 'hours');
+          }
+          Todos.updateUser(user);
+        })         
       };
       
       getDatesInRange(moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
@@ -79,7 +76,6 @@ angular.module('mwl.calendar.docs', [])
       var getEvents = function () {
         return Todos.getUser()
         .success(function (user) {
-
 
           Todos.getCalendar(user)
           .success(function (calendar) {
@@ -259,7 +255,7 @@ angular.module('mwl.calendar.docs', [])
         }
       };
 
-      getProjects();
+      // getProjects();
   
       vm.cellIsOpen = true;
   
