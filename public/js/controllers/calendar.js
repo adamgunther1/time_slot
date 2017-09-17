@@ -41,7 +41,7 @@ angular.module('mwl.calendar.docs', [])
       var blockOffTimes = function (user) {
         user.calendar.items.forEach(function (event) {
           let startTime = moment(event.startTime).startOf('hour');
-          let endTime = moment(event.endTime).startOf('hour');
+          let endTime = moment(event.endTime).endOf('hour');
           let busyHours = moment(endTime).diff(moment(startTime), 'hours');
 
 // fix logic to get start and end from event object and make busy
@@ -209,7 +209,7 @@ angular.module('mwl.calendar.docs', [])
                 "description" : description
               };
               postEvent(eventData);
-              Calendars.updateUser(user);
+              // Calendars.updateUser(user);
             })
             $route.reload();
             // $scope.events <<--- could be the key to return after postEvent
