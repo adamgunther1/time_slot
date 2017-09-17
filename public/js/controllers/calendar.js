@@ -67,17 +67,17 @@ angular.module('mwl.calendar.docs', [])
               .success(function (calendar) {
                 fullyLoadedCalendarItems.concat(calendar.items);
 
-                while (calendar.nextPageToken) {
-                  Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
-                  .success(function (nextCalendar) {
-                    fullyLoadedCalendarItems.concat(nextCalendar.items);
-                    if (nextCalendar.nextPageToken) {
-                      calendar.nextPageToken = nextCalendar.nextPageToken;
-                    } else {
-                      calendar.nextPageToken = false;
-                    }
-                  })
-                }
+                // while (calendar.nextPageToken) {
+                //   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
+                //   .success(function (nextCalendar) {
+                //     fullyLoadedCalendarItems.concat(nextCalendar.items);
+                //     if (nextCalendar.nextPageToken) {
+                //       calendar.nextPageToken = nextCalendar.nextPageToken;
+                //     } else {
+                //       calendar.nextPageToken = false;
+                //     }
+                //   })
+                // }
 
                 fullyLoadedCalendarItems.forEach(function (item, i) {
                       // user.calendar.items = [];
