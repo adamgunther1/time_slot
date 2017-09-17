@@ -142,15 +142,12 @@ angular.module('mwl.calendar.docs', [])
       });
     }
 
-      var postEvent = function (eventData) {
-        return Todos.getUser()
-        .success(function (user) {
+      var postEvent = function (user, eventData) {
           Todos.createCalendarEvent(user, eventData)
           .success(function (user) {
             let newEvent = createEvent(eventData);
             $scope.events.push(newEvent);
           })
-        })
       };
 
       var createEvent = function (event) {
@@ -220,7 +217,7 @@ angular.module('mwl.calendar.docs', [])
                 "summary" : title,
                 "description" : description
               };
-              postEvent(eventData);
+              postEvent(user, eventData);
             })
           }
         })
