@@ -145,7 +145,8 @@ angular.module('mwl.calendar.docs', [])
           // })
           
           let iterator = 0;
-          for (var i=0; i < hours; i++) {
+          let i = 0;
+          do {
             let hour = Object.keys(availability)[iterator];
             if ( availability[hour] === 'free' ) {
               availableHours.push(hour);
@@ -154,7 +155,9 @@ angular.module('mwl.calendar.docs', [])
             } else {
               iterator++;
             }
-          }
+          } while ( i < hours );
+
+
           debugger;
 
           // for ( var i=0; i < busyHours; i++ ) {
