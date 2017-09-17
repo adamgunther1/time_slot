@@ -39,9 +39,9 @@ angular.module('mwl.calendar.docs', [])
         .success(function (user) {
           var dates = {};
           while ( t1.isBefore(t2) ) {
-            if ( t1.format().includes('00:00:00') ) {
-              t1.add(8, 'hours')
-            }
+            // if ( t1.format().includes('00:00:00') ) {
+            //   t1.add(8, 'hours')
+            // }
             if ( t1.format().includes('18:00:00') ) {
               t1.add(14, 'hours')
             }
