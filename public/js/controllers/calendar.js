@@ -117,13 +117,10 @@ angular.module('mwl.calendar.docs', [])
       $scope.projectData = {};
 
       $scope.smartScheduler = function () {
-        console.log('--------PROJECT DATA --------');
-        console.log($scope.projectData);
         let hours = $scope.projectData.hours;
         let schedulePreference = $scope.projectData.schedulePreference;
         let startTime = $scope.projectData.startTime;
         let endTime = $scope.projectData.endTime;
-        debugger;
         
         if (schedulePreference === 'spreadOut') {
           distributeEventsEvenly(hours, startTime, endTime);
@@ -133,7 +130,22 @@ angular.module('mwl.calendar.docs', [])
       };
 
       var distributeEventsASAP = function (hours, startTime, endTime) {
-        debugger;
+        let workHoursBeforeAvailabityCheck = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
+        Todos.getUser()
+        .success(function (user) {
+          let availability = user.freeTime;
+          debugger;
+          // Object.keys(availabilty).
+
+          // for ( var i=0; i < busyHours; i++ ) {
+          //   user.freeTime[startTime.format()] = 'busy';
+          //   startTime = startTime.add(1, 'hours');
+          // }
+        })
+      };
+
+      var distributeEventsEvenly = function (hours, startTime, endTime) {
+
       };
 
       var getProjects = function () {
