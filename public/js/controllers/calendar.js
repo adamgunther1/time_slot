@@ -130,9 +130,7 @@ angular.module('mwl.calendar.docs', [])
               resizable: true,
               actions: actions
             }
-            $scope.$apply(function () {
-              $scope.events.push(newEvent);
-            });
+            $scope.events.push(newEvent);
 
 // maybe i could have a events loaded = false then true to reload it
           })
