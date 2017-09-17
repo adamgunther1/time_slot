@@ -2,7 +2,7 @@ angular.module('mwl.calendar.docs', [])
 
   .controller('calendarCtrl', function($scope, moment, calendarConfig, Calendars) {
       $scope.eventsLoaded = false;
-      $scope.events = [];
+      $scope.events;
       var userAuth = { userToken : '', userEmail : '' };
 
       var vm = this;
@@ -131,9 +131,12 @@ angular.module('mwl.calendar.docs', [])
               resizable: true,
               actions: actions
             }
-            $scope.events.push(newEvent);
 
-// maybe i could have a events loaded = false then true to reload it
+            // $scope.events.push(newEvent);
+
+           $scope.events[$scope.events.length] = newEvent;
+
+
           })
       };
 
