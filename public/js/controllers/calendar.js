@@ -178,7 +178,7 @@ angular.module('mwl.calendar.docs', [])
         .success(function (user) {
           let availability = user.freeTime;
           let availableHours = [];
-          
+          debugger;
           let iterator = 0;
           let i = 0;
           do {
