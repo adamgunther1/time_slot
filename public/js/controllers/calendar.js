@@ -48,10 +48,10 @@ angular.module('mwl.calendar.docs', [])
         }
 
         user.freeTime = dates;
-        Todos.updateUser(user)
-        .success(function (user) {
+        // Todos.updateUser(user)
+        // .success(function (user) {
           blockOffTimes(user);
-        })
+        // })
       };
 
       var blockOffTimes = function (user) {
@@ -117,8 +117,8 @@ angular.module('mwl.calendar.docs', [])
                   // })
               });
 
-              Todos.updateUser(user)
-              .success(function (user) {
+              // Todos.updateUser(user)
+              // .success(function (user) {
                 let calendarEvents = user.calendar.items;
                 let formattedCalendarEvents = calendarEvents.map(function (event, index) {
                   return createEvent(event);
@@ -128,7 +128,7 @@ angular.module('mwl.calendar.docs', [])
       
                 // let projects = user.projects
                 getDatesInRange(user, moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
-              })
+              // })
     
         });
       });
