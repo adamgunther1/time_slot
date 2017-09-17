@@ -140,8 +140,9 @@ angular.module('mwl.calendar.docs', [])
 
       var postEvent = function (user, eventData) {
           Todos.createCalendarEvent(user, eventData)
-          .success(function (user) {
-            let event = {
+          .success(function (event) {
+            debugger;
+            let newEvent = {
               id: event.id,
               title: event.summary,
               color: calendarConfig.colorTypes.info,
@@ -151,7 +152,7 @@ angular.module('mwl.calendar.docs', [])
               resizable: true,
               actions: actions
             }
-            let newEvent = createEvent(event);
+            createEvent(newEvent);
             $scope.events.push(newEvent);
           })
       };
