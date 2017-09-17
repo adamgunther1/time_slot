@@ -46,7 +46,7 @@ angular.module('mwl.calendar.docs', [])
 
 // fix logic to get start and end from event object and make busy
 
-
+          debugger;
           for ( var i=0; i < busyHours; i++ ) {
             user.freeTime[startTime.format()] = 'busy';
             startTime = startTime.add(1, 'hours');
