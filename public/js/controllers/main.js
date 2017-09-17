@@ -7,51 +7,51 @@ angular.module('mainCtrl', [])
         .success(function(user){
             if (user !== '0') {
                 $scope.loggedIn = true;
-                Todos.getCalendar(user)
-                    .success(function (calendar) {
-                        calendar.items.forEach(function (item, i) {
-                            user.calendar.items[i] = {  kind : '',
-                                                        etag : '',
-                                                        id : '',
-                                                        htmlLink : '',
-                                                        created : '',
-                                                        updated : '',
-                                                        summary : '',
-                                                        description : '',
-                                                        location : '',
-                                                        creatorEmail : '',
-                                                        organizerEmail : '',
-                                                        startTime : '',
-                                                        endTime : '',
-                                                        iCalUID : '',
-                                                        sequence : 0,
-                                                        hangoutLink : '',
-                                                        // attendees : [ { email : '', displayName : '', optional : true, responseStatus : '' } ],
-                                                        // reminders : { useDefault : false }
-                                                    }
-                            user.calendar.items[i].kind = calendar.items[i].kind;
-                            user.calendar.items[i].etag = calendar.items[i].etag;
-                            user.calendar.items[i].id = calendar.items[i].id;
-                            user.calendar.items[i].htmlLink = calendar.items[i].htmlLink;
-                            user.calendar.items[i].created = Date.parse(calendar.items[i].created);
-                            user.calendar.items[i].updated = Date.parse(calendar.items[i].updated);
-                            user.calendar.items[i].summary = calendar.items[i].summary;
-                            user.calendar.items[i].description = calendar.items[i].description;
-                            user.calendar.items[i].location = calendar.items[i].location;
-                            user.calendar.items[i].creatorEmail = calendar.items[i].creator.email;
-                            user.calendar.items[i].organizerEmail = calendar.items[i].organizer.email;
-                            user.calendar.items[i].startTime = Date.parse(calendar.items[i].start.dateTime);
-                            user.calendar.items[i].endTime = Date.parse(calendar.items[i].end.dateTime);
-                            user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
-                            user.calendar.items[i].sequence = calendar.items[i].sequence;
-                            user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
-                            // user.calendar.items[i].attendees = [];
-                            // calendar.items[i].attendees.forEach(function (attendee, j) {
-                            //     user.calendar.items[i].attendees[j] = attendee; 
-                            // })
-                        });
-                        Todos.updateUser(user)
-                    });
+                // Todos.getCalendar(user)
+                //     .success(function (calendar) {
+                //         calendar.items.forEach(function (item, i) {
+                //             user.calendar.items[i] = {  kind : '',
+                //                                         etag : '',
+                //                                         id : '',
+                //                                         htmlLink : '',
+                //                                         created : '',
+                //                                         updated : '',
+                //                                         summary : '',
+                //                                         description : '',
+                //                                         location : '',
+                //                                         creatorEmail : '',
+                //                                         organizerEmail : '',
+                //                                         startTime : '',
+                //                                         endTime : '',
+                //                                         iCalUID : '',
+                //                                         sequence : 0,
+                //                                         hangoutLink : '',
+                //                                         // attendees : [ { email : '', displayName : '', optional : true, responseStatus : '' } ],
+                //                                         // reminders : { useDefault : false }
+                //                                     }
+                //             user.calendar.items[i].kind = calendar.items[i].kind;
+                //             user.calendar.items[i].etag = calendar.items[i].etag;
+                //             user.calendar.items[i].id = calendar.items[i].id;
+                //             user.calendar.items[i].htmlLink = calendar.items[i].htmlLink;
+                //             user.calendar.items[i].created = Date.parse(calendar.items[i].created);
+                //             user.calendar.items[i].updated = Date.parse(calendar.items[i].updated);
+                //             user.calendar.items[i].summary = calendar.items[i].summary;
+                //             user.calendar.items[i].description = calendar.items[i].description;
+                //             user.calendar.items[i].location = calendar.items[i].location;
+                //             user.calendar.items[i].creatorEmail = calendar.items[i].creator.email;
+                //             user.calendar.items[i].organizerEmail = calendar.items[i].organizer.email;
+                //             user.calendar.items[i].startTime = Date.parse(calendar.items[i].start.dateTime);
+                //             user.calendar.items[i].endTime = Date.parse(calendar.items[i].end.dateTime);
+                //             user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
+                //             user.calendar.items[i].sequence = calendar.items[i].sequence;
+                //             user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
+                //             // user.calendar.items[i].attendees = [];
+                //             // calendar.items[i].attendees.forEach(function (attendee, j) {
+                //             //     user.calendar.items[i].attendees[j] = attendee; 
+                //             // })
+                //         });
+                //         Todos.updateUser(user)
+                //     });
             } else {
                 $scope.loggedIn = false;
             };
