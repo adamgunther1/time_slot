@@ -170,6 +170,7 @@ angular.module('mwl.calendar.docs', [])
 
       var distributeEventsASAP = function (hours, startTime, endTime, title, description) {
         let workHoursBeforeAvailabityCheck = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
+        getEvents();
         Calendars.getUser()
         .success(function (user) {
           let availability = user.freeTime;
