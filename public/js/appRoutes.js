@@ -26,25 +26,6 @@ angular.module('appRoutes', [])
 
       return deferred.promise;
     };
-    // ================================================
-    
-    //================================================
-    // Add an interceptor for AJAX errors
-    //================================================
-    // $httpProvider.interceptors.push(function($q, $location) {
-    //   return {
-    //     response: function(response) {
-    //       // do something on success
-    //       return response;
-    //     },
-    //     responseError: function(response) {
-    //       if (response.status === 401)
-    //         $location.url('/login');
-    //       return $q.reject(response);
-    //     }
-    //   };
-    // });
-
 
     $routeProvider
 
