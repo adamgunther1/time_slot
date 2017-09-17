@@ -68,12 +68,12 @@ angular.module('mwl.calendar.docs', [])
                 fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(calendar.items);
 
                 while (calendar.nextPageToken) {
+                  debugger;
                   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
                   .success(function (nextCalendar) {
                     fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
                     if (nextCalendar.nextPageToken) {
                       calendar.nextPageToken = nextCalendar.nextPageToken;
-                      debugger;
                     } else {
                       calendar.nextPageToken = false;
                     }
