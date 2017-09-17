@@ -135,7 +135,7 @@ angular.module('mwl.calendar.docs', [])
             // $scope.events.push(newEvent);
 
           vm.events[vm.events.length] = newEvent;
-          $route.reload();
+          // $route.reload();
 
 
           })
@@ -213,6 +213,7 @@ angular.module('mwl.calendar.docs', [])
               };
               postEvent(eventData);
             })
+            $route.reload();
             // $scope.events <<--- could be the key to return after postEvent
           }
         })
