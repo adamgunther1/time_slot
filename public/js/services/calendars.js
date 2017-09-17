@@ -8,9 +8,9 @@ angular.module('calendarService', [])
             getCalendar : function(user) {
                 return $http({
                             method : 'GET',
-                            url : `https://www.googleapis.com/calendar/v3/calendars/${user.google.email}/events`,
+                            url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events`,
                             headers : {
-                                Authorization : `Bearer ${user.google.token}` 
+                                Authorization : `Bearer ${user.userToken}` 
                             }
                 })
             },
@@ -29,9 +29,9 @@ angular.module('calendarService', [])
             createCalendarEvent : function(user, eventData) {
                 return $http({
                     method : 'POST',
-                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.google.email}/events`,
+                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events`,
                     headers : {
-                        Authorization : `Bearer ${user.google.token}`
+                        Authorization : `Bearer ${user.userToken}`
                     },
                     data : eventData
                 });

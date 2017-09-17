@@ -62,7 +62,7 @@ angular.module('mwl.calendar.docs', [])
         .success(function (user) {
           userAuth.userToken = user.google.token;
           userAuth.userEmail = user.google.email;
-          Calendars.getCalendar(user)
+          Calendars.getCalendar(userAuth)
           .success(function (calendar) {
               calendar.items.forEach(function (item, i) {
                   user.calendar.items[i] = {  kind : '',
@@ -106,33 +106,26 @@ angular.module('mwl.calendar.docs', [])
                   // })
               });
 
-              // Calendars.updateUser(user)
-              // .success(function (user) {
                 let calendarEvents = user.calendar.items;
                 let formattedCalendarEvents = calendarEvents.map(function (event, index) {
                   return createEvent(event);
                 })
                 $scope.events = formattedCalendarEvents;
-                $scope.eventsLoaded = true;
-      
-                // let projects = user.projects
+                $scope.projects = user.projects;
+                $scope.eventsLoaded = true;  
                 getDatesInRange(user, moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
-              // })
-    
         });
       });
     }
 
       var postEvent = function (user, eventData) {
-          Calendars.createCalendarEvent(user, eventData)
+          Calendars.createCalendarEvent(userAuth, eventData)
           .success(function (event) {
             let newEvent = {
               id: event.id,
               title: event.summary,
               color: calendarConfig.colorTypes.info,
-              // startsAt: moment(event.startTime).toDate(),
               startsAt: moment(event.start.dateTime).toDate(),
-              // endsAt: moment(event.endTime).toDate(),
               endsAt: moment(event.end.dateTime).toDate(),
               draggable: true,
               resizable: true,
@@ -219,12 +212,12 @@ angular.module('mwl.calendar.docs', [])
 
       };
 
-      var getProjects = function () {
-        return Calendars.getUser()
-        .success(function (user) {
-          $scope.projects = user.projects;
-        })
-      };
+      // var getProjects = function () {
+      //   return Calendars.getUser()
+      //   .success(function (user) {
+      //     $scope.projects = user.projects;
+      //   })
+      // };
 
       var postProject = function (projectData) {
         return Calendars.getUser()
@@ -255,17 +248,17 @@ angular.module('mwl.calendar.docs', [])
   
       vm.cellIsOpen = true;
   
-      vm.addEvent = function() {
-        $scope.events.push({
-          title: 'New event',
-          color: calendarConfig.colorTypes.important,
-          startsAt: moment().startOf('day').toDate(),
-          endsAt: moment().endOf('day').toDate(),
-          draggable: true,
-          resizable: true,
-          actions: actions
-        });
-      };
+      // vm.addEvent = function() {
+      //   $scope.events.push({
+      //     title: 'New event',
+      //     color: calendarConfig.colorTypes.important,
+      //     startsAt: moment().startOf('day').toDate(),
+      //     endsAt: moment().endOf('day').toDate(),
+      //     draggable: true,
+      //     resizable: true,
+      //     actions: actions
+      //   });
+      // };
   
       vm.eventClicked = function(event) {
       };
