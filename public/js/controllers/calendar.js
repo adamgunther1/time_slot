@@ -39,9 +39,9 @@ angular.module('mwl.calendar.docs', [])
         .success(function (user) {
           var dates = {};
           while ( t1.isBefore(t2) ) {
-            // if ( t1.format().includes('00:00:00') ) {
-            //   t1.add(8, 'hours')
-            // }
+            if ( t1.format().includes('00:00:00') ) {
+              t1.add(8, 'hours')
+            }
             if ( t1.format().includes('18:00:00') ) {
               t1.add(14, 'hours')
             }
@@ -124,25 +124,23 @@ angular.module('mwl.calendar.docs', [])
         let schedulePreference = $scope.projectData.schedulePreference;
         let startTime = $scope.projectData.startTime;
         let endTime = $scope.projectData.endTime;
+        let title = $scope.projectData.title;
+        let description = $scope.projectData.description;
+
         
         if (schedulePreference === 'spreadOut') {
-          distributeEventsEvenly(hours, startTime, endTime);
+          distributeEventsEvenly(hours, startTime, endTime, title, description);
         } else if (schedulePreference === 'asap') {
-          distributeEventsASAP(hours, startTime, endTime)
+          distributeEventsASAP(hours, startTime, endTime, title, description)
         }
       };
 
-      var distributeEventsASAP = function (hours, startTime, endTime) {
+      var distributeEventsASAP = function (hours, startTime, endTime, title, description) {
         let workHoursBeforeAvailabityCheck = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
         Todos.getUser()
         .success(function (user) {
           let availability = user.freeTime;
           let availableHours = [];
-          // Object.keys(availabilty).forEach(function (hour) {
-          //   if ( availability[hour] === 'free' ) {
-          //     availableHours.push(hour);
-          //   }
-          // })
           
           let iterator = 0;
           let i = 0;
@@ -157,17 +155,27 @@ angular.module('mwl.calendar.docs', [])
             }
           } while ( i < hours );
 
-
-          debugger;
-
-          // for ( var i=0; i < busyHours; i++ ) {
-          //   user.freeTime[startTime.format()] = 'busy';
-          //   startTime = startTime.add(1, 'hours');
-          // }
+          let workHoursToSpare = moment(endTime).diff(moment(availableHours.slice(-1)[0]), 'hours') * (10/24);
+          if ( (hours < workHoursBeforeAvailabityCheck) && (workHoursToSpare > 0 ) ) {
+            availableHours.forEach(function (hour) {
+              let endHour = hour.replace(':00:00', ':59:59');
+              let eventData = {
+                "start" : {
+                  "dateTime" : hour
+                },
+                "end" : {
+                  "dateTime" : endHour
+                },
+                "summary" : title,
+                "description" : description
+              };
+              postEvent(eventData);
+            })
+          }
         })
       };
 
-      var distributeEventsEvenly = function (hours, startTime, endTime) {
+      var distributeEventsEvenly = function (hours, startTime, endTime, title, description) {
 
       };
 
