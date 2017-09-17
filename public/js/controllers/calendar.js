@@ -14,8 +14,8 @@ angular.module('mwl.calendar.docs', [])
           label: '<i class=\'glyphicon glyphicon-remove\'></i>',
           onClick: function(args) {
             var eventID = args.calendarEvent.id;
-            var eventIndex = $scope.events.indexOf(args.calendarEvent);
-            $scope.events.splice(eventIndex, 1);
+            var eventIndex = vm.events.indexOf(args.calendarEvent);
+            vm.events.splice(eventIndex, 1);
 
             Calendars.deleteCalendarEvent(userAuth, eventID)
           }
@@ -135,7 +135,7 @@ angular.module('mwl.calendar.docs', [])
 
             // $scope.events.push(newEvent);
 
-          vm.events[$scope.events.length] = newEvent;
+          vm.events[vm.events.length] = newEvent;
 
 
           })
