@@ -134,6 +134,7 @@ angular.module('mwl.calendar.docs', [])
               actions: actions
             }
             $scope.events.push(newEvent);
+            $scope.$apply();
           })
       };
 
