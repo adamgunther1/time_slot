@@ -1,6 +1,6 @@
 angular.module('mwl.calendar.docs', [])
 
-  .controller('calendarCtrl', function($scope, moment, calendarConfig, Calendars) {
+  .controller('calendarCtrl', function($scope, $route, moment, calendarConfig, Calendars) {
       $scope.eventsLoaded = false;
 
       var userAuth = { userToken : '', userEmail : '' };
@@ -136,6 +136,7 @@ angular.module('mwl.calendar.docs', [])
             // $scope.events.push(newEvent);
 
           vm.events[vm.events.length] = newEvent;
+          $route.reload();
 
 
           })
