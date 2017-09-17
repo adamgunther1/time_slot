@@ -140,6 +140,7 @@ angular.module('mwl.calendar.docs', [])
     
         });
       });
+    }
 
       var postEvent = function (eventData) {
         return Todos.getUser()
