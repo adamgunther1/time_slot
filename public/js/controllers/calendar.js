@@ -2,7 +2,7 @@ angular.module('mwl.calendar.docs', [])
 
   .controller('calendarCtrl', function($scope, moment, calendarConfig, Calendars) {
       $scope.eventsLoaded = false;
-      $scope.events;
+      vm.events
       var userAuth = { userToken : '', userEmail : '' };
 
       var vm = this;
@@ -110,7 +110,7 @@ angular.module('mwl.calendar.docs', [])
                 let formattedCalendarEvents = user.calendar.items.map(function (event, index) {
                   return createEvent(event);
                 })
-                $scope.events = formattedCalendarEvents;
+                vm.events = formattedCalendarEvents;
                 $scope.projects = user.projects;
                 $scope.eventsLoaded = true;  
                 getDatesInRange(user, moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
@@ -135,7 +135,7 @@ angular.module('mwl.calendar.docs', [])
 
             // $scope.events.push(newEvent);
 
-           $scope.events[$scope.events.length] = newEvent;
+          vm.events[$scope.events.length] = newEvent;
 
 
           })
@@ -213,6 +213,7 @@ angular.module('mwl.calendar.docs', [])
               };
               postEvent(eventData);
             })
+            // $scope.events <<--- could be the key to return after postEvent
           }
         })
       };
