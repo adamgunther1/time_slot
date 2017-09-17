@@ -134,8 +134,25 @@ angular.module('mwl.calendar.docs', [])
         Todos.getUser()
         .success(function (user) {
           let availability = user.freeTime;
+          let availableHours = [];
+          // Object.keys(availabilty).forEach(function (hour) {
+          //   if ( availability[hour] === 'free' ) {
+          //     availableHours.push(hour);
+          //   }
+          // })
+          
+          let iterator = 0;
+          for (var i=0; i < hours; i++) {
+            let hour = Object.keys(availability)[iterator];
+            if ( availability[hour] === 'free' ) {
+              availableHours.push(hour);
+              i++;
+              iterator++;
+            } else {
+              iterator++
+            }
+          }
           debugger;
-          // Object.keys(availabilty).
 
           // for ( var i=0; i < busyHours; i++ ) {
           //   user.freeTime[startTime.format()] = 'busy';
