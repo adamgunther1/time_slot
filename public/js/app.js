@@ -1,2 +1,2 @@
 // public/app.js
-angular.module('angularTodo', ['ngRoute', 'ngResource', 'ngAnimate', 'appRoutes', 'mainCtrl', 'todoService', 'mwl.calendar.docs', 'ui.bootstrap', 'mwl.calendar', 'angularMoment', 'colorpicker.module']);
+angular.module('angularCalendar', ['ngRoute', 'ngResource', 'ngAnimate', 'appRoutes', 'mainCtrl', 'calendarService', 'mwl.calendar.docs', 'ui.bootstrap', 'mwl.calendar', 'angularMoment', 'colorpicker.module']);

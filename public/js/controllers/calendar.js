@@ -1,6 +1,6 @@
 angular.module('mwl.calendar.docs', [])
 
-  .controller('calendarCtrl', function($scope, moment, calendarConfig, Todos) {
+  .controller('calendarCtrl', function($scope, moment, calendarConfig, Calendars) {
       $scope.eventsLoaded = false;
 
       var vm = this;
@@ -20,9 +20,9 @@ angular.module('mwl.calendar.docs', [])
             var eventID = args.calendarEvent.id;
             var eventIndex = $scope.events.indexOf(args.calendarEvent);
             $scope.events.splice(eventIndex, 1);
-            Todos.getUser()
+            Calendars.getUser()
             .success(function (user) {
-              Todos.deleteCalendarEvent(user, eventID)
+              Calendars.deleteCalendarEvent(user, eventID)
               .success(function(event) {
                 alert('deleted successfully');
               })
@@ -48,7 +48,7 @@ angular.module('mwl.calendar.docs', [])
         }
 
         user.freeTime = dates;
-        // Todos.updateUser(user)
+        // Calendars.updateUser(user)
         // .success(function (user) {
           blockOffTimes(user);
         // })
@@ -65,15 +65,15 @@ angular.module('mwl.calendar.docs', [])
             startTime = startTime.add(1, 'hours');
           }
         })  
-        Todos.updateUser(user);
+        Calendars.updateUser(user);
       };
       
 
       var getEvents = function () {
-        return Todos.getUser()
+        return Calendars.getUser()
         .success(function (user) {
 
-          Todos.getCalendar(user)
+          Calendars.getCalendar(user)
           .success(function (calendar) {
               calendar.items.forEach(function (item, i) {
                   user.calendar.items[i] = {  kind : '',
@@ -117,7 +117,7 @@ angular.module('mwl.calendar.docs', [])
                   // })
               });
 
-              // Todos.updateUser(user)
+              // Calendars.updateUser(user)
               // .success(function (user) {
                 let calendarEvents = user.calendar.items;
                 let formattedCalendarEvents = calendarEvents.map(function (event, index) {
@@ -135,7 +135,7 @@ angular.module('mwl.calendar.docs', [])
     }
 
       var postEvent = function (user, eventData) {
-          Todos.createCalendarEvent(user, eventData)
+          Calendars.createCalendarEvent(user, eventData)
           .success(function (event) {
             let newEvent = {
               id: event.id,
@@ -188,7 +188,7 @@ angular.module('mwl.calendar.docs', [])
 
       var distributeEventsASAP = function (hours, startTime, endTime, title, description) {
         let workHoursBeforeAvailabityCheck = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
-        Todos.getUser()
+        Calendars.getUser()
         .success(function (user) {
           let availability = user.freeTime;
           let availableHours = [];
@@ -231,19 +231,19 @@ angular.module('mwl.calendar.docs', [])
       };
 
       var getProjects = function () {
-        return Todos.getUser()
+        return Calendars.getUser()
         .success(function (user) {
           $scope.projects = user.projects;
         })
       };
 
       var postProject = function (projectData) {
-        return Todos.getUser()
+        return Calendars.getUser()
         .success(function (user) {
             let newProject = createProject(projectData);
             let updatedUser = user.projects.push(newProject);
             $scope.projects.push(newProject);
-            Todos.updateUser(updatedUser);
+            Calendars.updateUser(updatedUser);
         })
       };
 
