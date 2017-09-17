@@ -17,12 +17,6 @@ angular.module('mwl.calendar.docs', [])
             $scope.events.splice(eventIndex, 1);
 
             Calendars.deleteCalendarEvent(userAuth, eventID)
-            .success(function(event) {
-              alert('deleted successfully');
-            })
-            .error(function(err) {
-              alert('event failed to delete' + err );
-            })
           }
         }];
 

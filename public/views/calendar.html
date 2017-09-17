@@ -2,7 +2,7 @@
     <h2 class="text-center">{{ vm.calendarTitle }}</h2>
     <ng-include src="'../views/calendarControls.html'"></ng-include>
     <mwl-calendar  
-        events="events"
+        events={{events}}
         view="vm.calendarView"
         view-title="vm.calendarTitle"
         view-date="vm.viewDate"
