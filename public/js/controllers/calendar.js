@@ -44,10 +44,13 @@ angular.module('mwl.calendar.docs', [])
       };
 
       var blockOffTimes = function (user) {
-        let busyTimes = user.calendar.items.forEach(function (event) {
+        user.calendar.items.forEach(function (event) {
           let startTime = moment(event.startTime).startOf('hour');
           let endTime = moment(event.endTime).startOf('hour');
           let busyHours = moment(endTime).diff(moment(startTime), 'hours');
+
+// fix logic to get start and end from event object and make busy
+
 
           for ( var i=0; i < busyHours; i++ ) {
             user.freeTime[startTime.format()] = 'busy';
@@ -133,7 +136,7 @@ angular.module('mwl.calendar.docs', [])
               resizable: true,
               actions: actions
             }
-            $scope.events.push(newEvent);
+            return $scope.events.push(newEvent);
             $scope.$apply();
           })
       };
