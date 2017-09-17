@@ -71,7 +71,6 @@ angular.module('mwl.calendar.docs', [])
         })         
       };
       
-      getDatesInRange(moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
 
       var getEvents = function () {
         return Todos.getUser()
@@ -141,18 +140,18 @@ angular.module('mwl.calendar.docs', [])
       var postEvent = function (user, eventData) {
           Todos.createCalendarEvent(user, eventData)
           .success(function (event) {
-            debugger;
             let newEvent = {
               id: event.id,
               title: event.summary,
               color: calendarConfig.colorTypes.info,
-              startsAt: moment(event.startTime).toDate(),
-              endsAt: moment(event.endTime).toDate(),
+              // startsAt: moment(event.startTime).toDate(),
+              startsAt: moment(event.start.dateTime).toDate(),
+              // endsAt: moment(event.endTime).toDate(),
+              endsAt: moment(event.end.dateTime).toDate(),
               draggable: true,
               resizable: true,
               actions: actions
             }
-            createEvent(newEvent);
             $scope.events.push(newEvent);
           })
       };
@@ -171,6 +170,7 @@ angular.module('mwl.calendar.docs', [])
       };
 
       getEvents();
+      getDatesInRange(moment().add(1, 'days').startOf('day'), moment().add(1, "year"), 1);
 
       $scope.projectData = {};
 
