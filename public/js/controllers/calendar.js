@@ -274,7 +274,7 @@ angular.module('mwl.calendar.docs', [])
           },
           "summary" : event.title
         };
-        Calendars.patchEvent(userAuth, eventData);
+        Calendars.updateEvent(userAuth, eventData);
 
       };
   
