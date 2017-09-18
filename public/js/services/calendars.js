@@ -15,6 +15,7 @@ angular.module('calendarService', [])
                 })
             },
             getCalendarNextPage : function (user, nextPageToken) {
+                debugger;
                 return $http({
                             method : 'GET',
                             url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events`,
