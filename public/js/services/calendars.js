@@ -14,10 +14,10 @@ angular.module('calendarService', [])
                             }
                 })
             },
-            getCalendarNextPage : function (user, nextPageToken) {
+            getCalendarNextPage : function (user, calendar) {
                 return $http({
                             method : 'GET',
-                            url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events?pageToken=${nextPageToken}`,
+                            url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events?pageToken=${calendar.nextPageToken}`,
                             headers : {
                                 Authorization : `Bearer ${user.userToken}` 
                             }
