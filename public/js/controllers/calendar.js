@@ -128,8 +128,6 @@ angular.module('mwl.calendar.docs', [])
               resizable: false,
               actions: actions
             }
-          // vm.events[vm.events.length] = newEvent;
-
 
           })
       };
