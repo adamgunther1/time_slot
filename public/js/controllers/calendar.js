@@ -78,6 +78,10 @@ angular.module('mwl.calendar.docs', [])
                       calendar.nextPageToken = false;
                     }
                   })
+                  .catch(function (err) {
+                    console.log(err)
+                  })
+                  
                 }
 
                 fullyLoadedCalendarItems.forEach(function (item, i) {
