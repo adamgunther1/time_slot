@@ -67,25 +67,30 @@ angular.module('mwl.calendar.docs', [])
               .success(function (calendar) {
                 fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(calendar.items);
 
-                while (calendar.nextPageToken) {
-                  debugger;
+                if (calendar.nextPageToken) {
                   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
                   .success(function (nextCalendar) {
                     fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
-                    if (nextCalendar.nextPageToken) {
-                      calendar.nextPageToken = nextCalendar.nextPageToken;
-                    } else {
-                      calendar.nextPageToken = false;
-                    }
-                  })
-                  .catch(function (err) {
-                    console.log(err)
-                  })
-                  
                 }
 
+                // while (calendar.nextPageToken) {
+                //   debugger;
+                //   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
+                //   .success(function (nextCalendar) {
+                //     fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
+                //     if (nextCalendar.nextPageToken) {
+                //       calendar.nextPageToken = nextCalendar.nextPageToken;
+                //     } else {
+                //       calendar.nextPageToken = false;
+                //     }
+                //   })
+                //   .catch(function (err) {
+                //     console.log(err)
+                //   })
+                  
+                // }
+
                 fullyLoadedCalendarItems.forEach(function (item, i) {
-                      // user.calendar.items = [];
                       user.calendar.items[i] = {  kind : '',
                                                   etag : '',
                                                   id : '',
