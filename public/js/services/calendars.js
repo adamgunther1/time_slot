@@ -18,7 +18,7 @@ angular.module('calendarService', [])
                 return $http({
                             method : 'GET',
                             url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events`,
-                            params : {pageToken: nextPageToken},
+                            params : { 'pageToken' : nextPageToken},
                             headers : {
                                 Authorization : `Bearer ${user.userToken}` 
                             }
