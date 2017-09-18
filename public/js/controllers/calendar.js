@@ -62,39 +62,9 @@ angular.module('mwl.calendar.docs', [])
           userAuth.userToken = user.google.token;
           userAuth.userEmail = user.google.email;
           user.calendar.items = [];
-          let fullyLoadedCalendarItems = [];
               Calendars.getCalendar(userAuth)
               .success(function (calendar) {
-                fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(calendar.items);
-
-                // if (calendar.nextPageToken) {
-                //   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
-                //   .success(function (nextCalendar) {
-                //     fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
-                //   })
-                //   .catch(function (err) {
-                //     console.log(err);
-                //   })
-                // }
-
-                // while (calendar.nextPageToken) {
-                //   debugger;
-                //   Calendars.getCalendarNextPage(userAuth, calendar.nextPageToken)
-                //   .success(function (nextCalendar) {
-                //     fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
-                //     if (nextCalendar.nextPageToken) {
-                //       calendar.nextPageToken = nextCalendar.nextPageToken;
-                //     } else {
-                //       calendar.nextPageToken = false;
-                //     }
-                //   })
-                //   .catch(function (err) {
-                //     console.log(err)
-                //   })
-                  
-                // }
-
-                fullyLoadedCalendarItems.forEach(function (item, i) {
+                calendar.items.forEach(function (item, i) {
                       user.calendar.items[i] = {  kind : '',
                                                   etag : '',
                                                   id : '',
@@ -114,22 +84,22 @@ angular.module('mwl.calendar.docs', [])
                                                   // attendees : [ { email : '', displayName : '', optional : true, responseStatus : '' } ],
                                                   // reminders : { useDefault : false }
                                               }
-                      user.calendar.items[i].kind = fullyLoadedCalendarItems[i].kind;
-                      user.calendar.items[i].etag = fullyLoadedCalendarItems[i].etag;
-                      user.calendar.items[i].id = fullyLoadedCalendarItems[i].id;
-                      user.calendar.items[i].htmlLink = fullyLoadedCalendarItems[i].htmlLink;
-                      user.calendar.items[i].created = Date.parse(fullyLoadedCalendarItems[i].created);
-                      user.calendar.items[i].updated = Date.parse(fullyLoadedCalendarItems[i].updated);
-                      user.calendar.items[i].summary = fullyLoadedCalendarItems[i].summary;
-                      user.calendar.items[i].description = fullyLoadedCalendarItems[i].description;
-                      user.calendar.items[i].location = fullyLoadedCalendarItems[i].location;
-                      user.calendar.items[i].creatorEmail = fullyLoadedCalendarItems[i].creator.email;
-                      user.calendar.items[i].organizerEmail = fullyLoadedCalendarItems[i].organizer.email;
-                      user.calendar.items[i].startTime = Date.parse(fullyLoadedCalendarItems[i].start.dateTime);
-                      user.calendar.items[i].endTime = Date.parse(fullyLoadedCalendarItems[i].end.dateTime);
-                      user.calendar.items[i].iCalUID = fullyLoadedCalendarItems[i].iCalUID;
-                      user.calendar.items[i].sequence = fullyLoadedCalendarItems[i].sequence;
-                      user.calendar.items[i].hangoutLink = fullyLoadedCalendarItems[i].hangoutLink;
+                      user.calendar.items[i].kind = calendar.items[i].kind;
+                      user.calendar.items[i].etag = calendar.items[i].etag;
+                      user.calendar.items[i].id = calendar.items[i].id;
+                      user.calendar.items[i].htmlLink = calendar.items[i].htmlLink;
+                      user.calendar.items[i].created = Date.parse(calendar.items[i].created);
+                      user.calendar.items[i].updated = Date.parse(calendar.items[i].updated);
+                      user.calendar.items[i].summary = calendar.items[i].summary;
+                      user.calendar.items[i].description = calendar.items[i].description;
+                      user.calendar.items[i].location = calendar.items[i].location;
+                      user.calendar.items[i].creatorEmail = calendar.items[i].creator.email;
+                      user.calendar.items[i].organizerEmail = calendar.items[i].organizer.email;
+                      user.calendar.items[i].startTime = Date.parse(calendar.items[i].start.dateTime);
+                      user.calendar.items[i].endTime = Date.parse(calendar.items[i].end.dateTime);
+                      user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
+                      user.calendar.items[i].sequence = calendar.items[i].sequence;
+                      user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
                       // user.calendar.items[i].attendees = [];
                       // calendar.items[i].attendees.forEach(function (attendee, j) {
                       //     user.calendar.items[i].attendees[j] = attendee; 
