@@ -131,7 +131,7 @@ angular.module('mwl.calendar.docs', [])
               resizable: false,
               actions: actions
             }
-          vm.events[vm.events.length] = newEvent;
+          // vm.events[vm.events.length] = newEvent;
 
 
           })
@@ -258,14 +258,24 @@ angular.module('mwl.calendar.docs', [])
       };
   
       vm.eventEdited = function(event) {
-        debugger;
       };
   
       vm.eventDeleted = function(event) {
       };
   
       vm.eventTimesChanged = function(event) {
-        debugger;
+        let eventData = {
+          "id" : event.id,
+          "start" : {
+            "dateTime" : event.startsAt
+          },
+          "end" : {
+            "dateTime" : event.endsAt
+          },
+          "summary" : event.title
+        };
+        Calendars.patchEvent(userAuth, eventData);
+
       };
   
       vm.toggle = function($event, field, event) {

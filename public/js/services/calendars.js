@@ -26,6 +26,16 @@ angular.module('calendarService', [])
 
             //     })
             // },
+            patchEvent : function (user, eventData) {
+                return $http({
+                    method : 'PATCH',
+                    url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events/${eventData.id}`,
+                    headers : {
+                        Authorization : `Bearer ${user.userToken}`
+                    },
+                    data : eventData
+                })
+            },
             updateUser : function(user) {
                 return $http.put(`/api/v1/current-user`, user);
             },
