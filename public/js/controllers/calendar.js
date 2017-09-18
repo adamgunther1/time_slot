@@ -72,6 +72,9 @@ angular.module('mwl.calendar.docs', [])
                   .success(function (nextCalendar) {
                     fullyLoadedCalendarItems = fullyLoadedCalendarItems.concat(nextCalendar.items);
                   })
+                  .catch(function (err) {
+                    console.log(err);
+                  })
                 }
 
                 // while (calendar.nextPageToken) {
