@@ -264,6 +264,7 @@ angular.module('mwl.calendar.docs', [])
       };
   
       vm.eventTimesChanged = function(event) {
+        debugger;
         let eventData = {
           "id" : event.id,
           "start" : {
