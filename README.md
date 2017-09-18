@@ -62,7 +62,7 @@ nodemon
 
 ## API Endpoints
 
-Once the user logs in, the Angular frontend interacts with the current user endpoint that Express/Node servers up after the user authenticates. In order to secure the endpoint, the user must be logged in or the endpoint will have a '0' response. The MongoDB User document contains all the user's events, projects, time availability, and google information and Express/Node serves this document up as JSON. 
+Once the user logs in, the Angular frontend interacts with the current user endpoint that Express/Node serves up on the backend after the user authenticates. The MongoDB User document contains all the user's events, projects, time availability, and google information and Express/Node serves this document up as JSON. In order to secure the endpoint, the user must be logged in or the endpoint will have a '0' response.
 
 ```
 /api/v1/current-user
