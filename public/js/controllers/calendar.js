@@ -128,7 +128,7 @@ angular.module('mwl.calendar.docs', [])
               startsAt: moment(event.start.dateTime).toDate(),
               endsAt: moment(event.end.dateTime).toDate(),
               draggable: true,
-              resizable: true,
+              resizable: false,
               actions: actions
             }
           vm.events[vm.events.length] = newEvent;
@@ -145,7 +145,7 @@ angular.module('mwl.calendar.docs', [])
           startsAt: moment(event.startTime).toDate(),
           endsAt: moment(event.endTime).toDate(),
           draggable: true,
-          resizable: true,
+          resizable: false,
           actions: actions
         }
       };
@@ -184,7 +184,7 @@ angular.module('mwl.calendar.docs', [])
           let i = 0;
           do {
             let hour = Object.keys(availability)[iterator];
-            if ( availability[hour] === 'free' ) {
+            if ( availability[hour] === 'free' && moment(hour).diff(moment(startTime), 'hours') > 0 ) {
               availableHours.push(hour);
               // user.freeTime[hour] = 'busy';
               i++;
