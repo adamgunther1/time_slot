@@ -150,6 +150,7 @@ angular.module('mwl.calendar.docs', [])
       $scope.projectData = {};
 
       $scope.smartScheduler = function () {
+        debugger;
         let hours = $scope.projectData.hours;
         let schedulePreference = $scope.projectData.schedulePreference;
         let startTime = $scope.projectData.startTime;
