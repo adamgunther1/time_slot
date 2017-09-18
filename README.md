@@ -6,6 +6,8 @@
 + [About](#about)
 + [Technology](#technology)
 + [Usage](#usage)
++ [API Endpoints](#api endpoints)
+
 
 ## Demo
 
@@ -43,7 +45,7 @@ touch .env
 
 #### Environment Variables
 
-In your .env file, add the following environment variables:
+You will need to procure your own environment variables. In your .env file, add the following environment variables:
 ```
 CLIENTID
 CLIENTSECRET
@@ -56,4 +58,12 @@ Visit https://console.developers.google.com/projectselector/apis/library to setu
 To run local server, use nodemon:
 ```
 nodemon
+```
+
+## API Endpoints
+
+Once the user logs in, the Angular frontend interacts with the current user endpoint that Express/Node servers up after the user authenticates. In order to secure the endpoint, the user must be logged in or the endpoint will have a '0' response. The MongoDB User document contains all the user's events, projects, time availability, and google information and Express/Node serves this document up as JSON. 
+
+```
+/api/v1/current-user
 ```
