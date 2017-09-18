@@ -50,3 +50,10 @@ CLIENTSECRET
 CALLBACKURL
 ```
 Visit https://console.developers.google.com/projectselector/apis/library to setup a project on Google's Developers Console and get your client ID, client secret, and callback url.
+
+#### Run Local Server
+
+To run local server, use nodemon:
+```
+nodemon
+```
