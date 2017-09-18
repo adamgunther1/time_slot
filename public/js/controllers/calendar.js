@@ -44,9 +44,6 @@ angular.module('mwl.calendar.docs', [])
           let endTime = moment(event.endTime).startOf('hour');
           let busyHours = moment(endTime).diff(moment(startTime), 'hours');
 
-// fix logic to get start and end from event object and make busy
-
-          // debugger;
           for ( var i=0; i < busyHours; i++ ) {
             user.freeTime[startTime.format()] = 'busy';
             startTime = startTime.add(1, 'hours');
@@ -264,7 +261,6 @@ angular.module('mwl.calendar.docs', [])
       };
   
       vm.eventTimesChanged = function(event) {
-        debugger;
         let eventData = {
           "id" : event.id,
           "start" : {
