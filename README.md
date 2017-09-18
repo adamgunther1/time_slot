@@ -13,6 +13,8 @@
 
 https://time-slot.herokuapp.com
 
+![Time Slot Dashboard](https://github.com/adamgunther1/time_slot/blob/master/time-slot-dashboard.png)
+
 ## About
 
 This application is a project management scheduling assistant. Time Slot can serve as a tool to communicate what work is coming down the pipeline, when there are openings, and how much more work can be taken on. This could help freelancers manage workload or provide a better view for business development, sales, project managers when bidding on new jobs or managing multiple project.
