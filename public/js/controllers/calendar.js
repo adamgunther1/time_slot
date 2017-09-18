@@ -263,7 +263,7 @@ angular.module('mwl.calendar.docs', [])
       vm.eventDeleted = function(event) {
       };
   
-      vm.eventTimesChanged = function(event) {
+      vm.eventTimesChanged = function(event, calendarNewEventStart, calendarNewEventEnd) {
         debugger;
         let eventData = {
           "id" : event.id,
