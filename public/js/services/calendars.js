@@ -27,7 +27,6 @@ angular.module('calendarService', [])
             //     })
             // },
             patchEvent : function (user, eventData) {
-                debugger;
                 return $http({
                     method : 'PATCH',
                     url : `https://www.googleapis.com/calendar/v3/calendars/${user.userEmail}/events/${eventData.id}`,

@@ -267,10 +267,10 @@ angular.module('mwl.calendar.docs', [])
         let eventData = {
           "id" : event.id,
           "start" : {
-            "dateTime" : event.startsAt
+            "dateTime" : moment(event.startsAt).format()
           },
           "end" : {
-            "dateTime" : event.endsAt
+            "dateTime" : moment(event.endsAt).format()
           },
           "summary" : event.title
         };
