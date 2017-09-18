@@ -43,7 +43,7 @@ touch .env
 
 #### Environment Variables
 
-In your .env file, add the following environment variable:
+In your .env file, add the following environment variables:
 ```
 CLIENTID
 CLIENTSECRET
