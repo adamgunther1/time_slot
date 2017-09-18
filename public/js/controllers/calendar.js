@@ -201,10 +201,8 @@ angular.module('mwl.calendar.docs', [])
                 "description" : description
               };
               postEvent(eventData);
-              // Calendars.updateUser(user);
             })
             $route.reload();
-            // $scope.events <<--- could be the key to return after postEvent
           }
         })
       };
