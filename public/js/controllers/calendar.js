@@ -178,15 +178,12 @@ angular.module('mwl.calendar.docs', [])
           let availability = user.freeTime;
           let availableHours = [];
 
-// figure out how to add onto correct days / hours . Get index maybe?
-
           let iterator = 0;
           let i = 0;
           do {
             let hour = Object.keys(availability)[iterator];
             if ( availability[hour] === 'free' && moment(hour).diff(moment(startTime), 'hours') > 0 ) {
               availableHours.push(hour);
-              // user.freeTime[hour] = 'busy';
               i++;
               iterator++;
             } else {
@@ -228,57 +225,47 @@ angular.module('mwl.calendar.docs', [])
       //   })
       // };
 
-      var postProject = function (projectData) {
-        return Calendars.getUser()
-        .success(function (user) {
-            let newProject = createProject(projectData);
-            let updatedUser = user.projects.push(newProject);
-            $scope.projects.push(newProject);
-            Calendars.updateUser(updatedUser);
-        })
-      };
+      // var postProject = function (projectData) {
+      //   return Calendars.getUser()
+      //   .success(function (user) {
+      //       let newProject = createProject(projectData);
+      //       let updatedUser = user.projects.push(newProject);
+      //       $scope.projects.push(newProject);
+      //       Calendars.updateUser(updatedUser);
+      //   })
+      // };
 
-      var createProject = function (project) {
-        return {
-          title : project.title,
-          description : project.description,
-          client : project.client,
-          // color : project.color,
-          jobID : project.jobID,
-          hours : project.hours,
-          startTime : project.startTime,
-          endTime : project.endTime,
-          schedulePreference : project.schedulePreference,
-          events : project.events
-        }
-      };
+      // var createProject = function (project) {
+      //   return {
+      //     title : project.title,
+      //     description : project.description,
+      //     client : project.client,
+      //     // color : project.color,
+      //     jobID : project.jobID,
+      //     hours : project.hours,
+      //     startTime : project.startTime,
+      //     endTime : project.endTime,
+      //     schedulePreference : project.schedulePreference,
+      //     events : project.events
+      //   }
+      // };
 
       // getProjects();
   
       vm.cellIsOpen = true;
   
-      // vm.addEvent = function() {
-      //   $scope.events.push({
-      //     title: 'New event',
-      //     color: calendarConfig.colorTypes.important,
-      //     startsAt: moment().startOf('day').toDate(),
-      //     endsAt: moment().endOf('day').toDate(),
-      //     draggable: true,
-      //     resizable: true,
-      //     actions: actions
-      //   });
-      // };
-  
       vm.eventClicked = function(event) {
       };
   
       vm.eventEdited = function(event) {
+        debugger;
       };
   
       vm.eventDeleted = function(event) {
       };
   
       vm.eventTimesChanged = function(event) {
+        debugger;
       };
   
       vm.toggle = function($event, field, event) {
