@@ -7,7 +7,7 @@ angular.module('mwl.calendar.docs', [])
 
       var vm = this;
       //These variables MUST be set as a minimum for the calendar to work
-      vm.calendarView = 'week';
+      vm.calendarView = 'month';
       vm.viewDate = new Date();
       var actions = [
         {

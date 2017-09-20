@@ -36,14 +36,6 @@ angular.module('appRoutes', [])
           loggedin: checkLoggedin
         }
       })
-
-      .when('/todos', {
-        templateUrl: 'views/todos.html',
-        controller: 'mainController',
-        resolve: {
-          loggedin: checkLoggedin
-        }
-      })
       
       .when('/login', {
         templateUrl: 'views/login.html',
