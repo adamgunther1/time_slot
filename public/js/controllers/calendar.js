@@ -49,7 +49,10 @@ angular.module('mwl.calendar.docs', [])
             startTime = startTime.add(1, 'hours');
           }
         })  
-        Calendars.updateUser(user);
+        Calendars.updateUser(user)
+        .success(function (user) {
+          console.log('user updated')
+        })
       };
       
 
@@ -229,13 +232,8 @@ angular.module('mwl.calendar.docs', [])
             }
           } while ( moment(hour).diff(moment(endTime), 'hours') < 0 );
 
-          //need to remove from available hours in a pattern to distribute evenly - start from back
           let totalSlots = availableHours.length;
-          // let interval = Math.round(totalSlots / hours);
           let interval = hours / totalSlots;
-
-// 2 / 14 - delete 12 = .14 .28 .42 .56 *1* .7 .84 .98 1.12 1.26 1.4 1.54 *2* 1.68 1.82 1.96 
-// logic - once it rounds to a new whole number, track what the index value is, then map that one to a new array of hours to keep
           let intervalSummed = 0;
           let indexTracker = 0;
           let intervalsBooked = [0];
@@ -248,15 +246,6 @@ angular.module('mwl.calendar.docs', [])
             }
             indexTracker++;
           } while ( availableHoursToBook.length < hours )
-
-          // i = availableHours.length - 1
-          // do {
-          //   availableHours.splice(i, 1)
-          //   i = i - interval
-          //   if ( i < 0 ) {
-          //     i = availableHours.length - 1
-          //   }
-          // } while ( availableHours.length > hours )
 
           let workHoursToSpare = moment(endTime).diff(moment(availableHoursToBook.slice(-1)[0]), 'hours') * (10/24);
           if ( (hours < totalWorkHoursDuringProjectTimeLine) && (workHoursToSpare > 0 ) ) {
