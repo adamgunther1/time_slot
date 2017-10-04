@@ -217,8 +217,9 @@ angular.module('mwl.calendar.docs', [])
           
           let iterator = 0;
           let i = 0;
+          let hour = Object.keys(availability)[iterator];
           do {
-            let hour = Object.keys(availability)[iterator];
+            hour = Object.keys(availability)[iterator];
             if ( availability[hour] === 'free' && moment(hour).diff(moment(startTime), 'hours') > 0 && moment(hour).diff(moment(endTime), 'hours') < 0 ) {
               availableHours.push(hour);
               i++;
