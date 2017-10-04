@@ -231,6 +231,7 @@ angular.module('mwl.calendar.docs', [])
 
           //need to remove from available hours in a pattern to distribute evenly - start from back
           let totalSlots = availableHours.length;
+          console.log('totalSlots' + availableHours);
           let interval = Math.round(totalSlots / hours);
           i = availableHours.length - 1
           do {
@@ -238,6 +239,7 @@ angular.module('mwl.calendar.docs', [])
             i = i - interval
             if ( i < 0 ) {
               i = availableHours.length - 1
+              console.log('hits end' + availableHours)
             }
           } while ( availableHours.length > hours )
 
