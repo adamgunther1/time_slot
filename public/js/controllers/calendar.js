@@ -231,21 +231,36 @@ angular.module('mwl.calendar.docs', [])
 
           //need to remove from available hours in a pattern to distribute evenly - start from back
           let totalSlots = availableHours.length;
-          console.log('totalSlots' + availableHours);
-          let interval = Math.round(totalSlots / hours);
-          i = availableHours.length - 1
-          do {
-            availableHours.splice(i, 1)
-            i = i - interval
-            if ( i < 0 ) {
-              i = availableHours.length - 1
-              console.log('hits end' + availableHours)
-            }
-          } while ( availableHours.length > hours )
+          // let interval = Math.round(totalSlots / hours);
+          let interval = Math.round(hours / totalSlots);
 
-          let workHoursToSpare = moment(endTime).diff(moment(availableHours.slice(-1)[0]), 'hours') * (10/24);
+// 2 / 14 - delete 12 = .14 .28 .42 .56 *1* .7 .84 .98 1.12 1.26 1.4 1.54 *2* 1.68 1.82 1.96 
+// logic - once it rounds to a new whole number, track what the index value is, then map that one to a new array of hours to keep
+          let intervalSummed = 0;
+          let indexTracker = 0;
+          let intervalsBooked = [];
+          let availableHoursToBook = [];
+          do {
+            intervalSummed = intervalSummed + interval;
+            if (intervalsBooked.includes( Math.round(intervalSummed)) === false ) {
+              intervalsBooked.push(Math.round(intervalSummed));
+              availableHoursToBook.push(availableHours[indexTracker]);
+            }
+            indexTracker++;
+          } while ( availableHoursToBook.length < hours )
+
+          // i = availableHours.length - 1
+          // do {
+          //   availableHours.splice(i, 1)
+          //   i = i - interval
+          //   if ( i < 0 ) {
+          //     i = availableHours.length - 1
+          //   }
+          // } while ( availableHours.length > hours )
+
+          let workHoursToSpare = moment(endTime).diff(moment(availableHoursToBook.slice(-1)[0]), 'hours') * (10/24);
           if ( (hours < totalWorkHoursDuringProjectTimeLine) && (workHoursToSpare > 0 ) ) {
-            availableHours.forEach(function (hour) {
+            availableHoursToBook.forEach(function (hour) {
               let endHour = moment(hour).add(1, 'hours').format();
               let eventData = {
                 "start" : {
