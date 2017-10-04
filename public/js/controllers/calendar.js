@@ -232,7 +232,7 @@ angular.module('mwl.calendar.docs', [])
           //need to remove from available hours in a pattern to distribute evenly - start from back
           let totalSlots = availableHours.length;
           // let interval = Math.round(totalSlots / hours);
-          let interval = Math.round(hours / totalSlots);
+          let interval = hours / totalSlots;
 
 // 2 / 14 - delete 12 = .14 .28 .42 .56 *1* .7 .84 .98 1.12 1.26 1.4 1.54 *2* 1.68 1.82 1.96 
 // logic - once it rounds to a new whole number, track what the index value is, then map that one to a new array of hours to keep
