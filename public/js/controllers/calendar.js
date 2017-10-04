@@ -166,7 +166,7 @@ angular.module('mwl.calendar.docs', [])
       };
 
       var distributeEventsASAP = function (hours, startTime, endTime, title, description) {
-        let workHoursBeforeAvailabityCheck = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
+        let totalWorkHoursDuringProjectTimeLine = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
         getEvents();
         Calendars.getUser()
         .success(function (user) {
@@ -187,7 +187,7 @@ angular.module('mwl.calendar.docs', [])
           } while ( i < hours );
 
           let workHoursToSpare = moment(endTime).diff(moment(availableHours.slice(-1)[0]), 'hours') * (10/24);
-          if ( (hours < workHoursBeforeAvailabityCheck) && (workHoursToSpare > 0 ) ) {
+          if ( (hours < totalWorkHoursDuringProjectTimeLine) && (workHoursToSpare > 0 ) ) {
             availableHours.forEach(function (hour) {
               let endHour = moment(hour).add(1, 'hours').format();
               let eventData = {
@@ -208,7 +208,57 @@ angular.module('mwl.calendar.docs', [])
       };
 
       var distributeEventsEvenly = function (hours, startTime, endTime, title, description) {
+        let totalWorkHoursDuringProjectTimeLine = Math.floor(moment(endTime).diff(moment(startTime), 'hours') * (10/24));
+        getEvents();
+        Calendars.getUser() 
+        .success(function (user) {
+          let availability = user.freeTime;
+          let availableHours = [];   
+          
+          let iterator = 0;
+          let i = 0;
+          do {
+            let hour = Object.keys(availability)[iterator];
+            if ( availability[hour] === 'free' && moment(hour).diff(moment(startTime), 'hours') > 0 && moment(hour).diff(moment(endTime), 'hours') < 0 ) {
+              availableHours.push(hour);
+              i++;
+              iterator++;
+            } else {
+              iterator++;
+            }
+          } while ( moment(hour).diff(moment(endTime), 'hours') < 0 );
 
+          //need to remove from available hours in a pattern to distribute evenly - start from back
+          let totalSlots = availableHours.length;
+          let interval = Math.round(totalSlots / hours);
+          i = availableHours.length - 1
+          do {
+            availableHours.splice(i, 1)
+            i = i - interval
+            if ( i < 0 ) {
+              i = availableHours.length - 1
+            }
+          } while ( availableHours.length > hours )
+
+          let workHoursToSpare = moment(endTime).diff(moment(availableHours.slice(-1)[0]), 'hours') * (10/24);
+          if ( (hours < totalWorkHoursDuringProjectTimeLine) && (workHoursToSpare > 0 ) ) {
+            availableHours.forEach(function (hour) {
+              let endHour = moment(hour).add(1, 'hours').format();
+              let eventData = {
+                "start" : {
+                  "dateTime" : hour
+                },
+                "end" : {
+                  "dateTime" : endHour
+                },
+                "summary" : title,
+                "description" : description
+              };
+              postEvent(eventData);
+            })
+            $route.reload();
+          }
+        })  
       };
 
       // var getProjects = function () {
