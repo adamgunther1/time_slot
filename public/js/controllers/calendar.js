@@ -238,7 +238,7 @@ angular.module('mwl.calendar.docs', [])
 // logic - once it rounds to a new whole number, track what the index value is, then map that one to a new array of hours to keep
           let intervalSummed = 0;
           let indexTracker = 0;
-          let intervalsBooked = [];
+          let intervalsBooked = [0];
           let availableHoursToBook = [];
           do {
             intervalSummed = intervalSummed + interval;
