@@ -56,7 +56,8 @@ var userSchema = mongoose.Schema({
         endTime : Date,
         iCalUID : String,
         sequence : Number,
-        hangoutLink : String
+        hangoutLink : String,
+        colorId : String
       }
     ]
   }

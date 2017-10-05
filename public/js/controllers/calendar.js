@@ -100,6 +100,7 @@ angular.module('mwl.calendar.docs', [])
                       user.calendar.items[i].iCalUID = calendar.items[i].iCalUID;
                       user.calendar.items[i].sequence = calendar.items[i].sequence;
                       user.calendar.items[i].hangoutLink = calendar.items[i].hangoutLink;
+                      user.calendar.items[i].colorId = calendar.items[i].colorId
                       // user.calendar.items[i].attendees = [];
                       // calendar.items[i].attendees.forEach(function (attendee, j) {
                       //     user.calendar.items[i].attendees[j] = attendee; 
