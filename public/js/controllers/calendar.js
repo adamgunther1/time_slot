@@ -224,8 +224,8 @@ angular.module('mwl.calendar.docs', [])
                 "colorId" : randomColor
               };
               postEvent(eventData);
+              $route.reload();
             })
-            $route.reload();
           }
         })
       };
@@ -285,8 +285,8 @@ angular.module('mwl.calendar.docs', [])
                 "colorId" : randomColor
               };
               postEvent(eventData);
+              $route.reload();
             })
-            $route.reload();
           }
         })  
       };
