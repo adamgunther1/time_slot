@@ -118,13 +118,27 @@ angular.module('mwl.calendar.docs', [])
       });
     }
 
+      var projectColors = {'1' : {  primary: '#a4bdfc', secondary: '#a4bdfc' },
+                           '2' : {  primary: '#7ae7bf', secondary: '#7ae7bf' },
+                           '3' : {  primary: '#dbadff', secondary: '#dbadff' },
+                           '4' : {  primary: '#ff887c', secondary: '#ff887c' },
+                           '5' : {  primary: '#fbd75b', secondary: '#fbd75b' },
+                           '6' : {  primary: '#ffb878', secondary: '#ffb878' },
+                           '7' : {  primary: '#46d6db', secondary: '#46d6db' },
+                           '8' : {  primary: '#e1e1e1', secondary: '#e1e1e1' },
+                           '9' : {  primary: '#5484ed', secondary: '#5484ed' },
+                           '10' : {  primary: '#51b749', secondary: '#51b749' },
+                           '11' : {  primary: '#dc2127', secondary: '#dc2127' },  
+                          };
+
       var postEvent = function (eventData) {
           Calendars.createCalendarEvent(userAuth, eventData)
           .success(function (event) {
             let newEvent = {
               id: event.id,
               title: event.summary,
-              color: calendarConfig.colorTypes.info,
+              // color: calendarConfig.colorTypes.info,
+              color: event.projectColors[event.colorId],
               startsAt: moment(event.start.dateTime).toDate(),
               endsAt: moment(event.end.dateTime).toDate(),
               draggable: true,
@@ -140,7 +154,8 @@ angular.module('mwl.calendar.docs', [])
           id: event.id,
           title: event.summary,
           // color: calendarConfig.colorTypes.info,
-          color: {  primary: '#e3bc08', secondary: '#fdf1ba' },
+          // color: {  primary: '#e3bc08', secondary: '#fdf1ba' },
+          color: projectColors[event.colorId],
           startsAt: moment(event.startTime).toDate(),
           endsAt: moment(event.endTime).toDate(),
           draggable: true,
