@@ -192,6 +192,8 @@ angular.module('mwl.calendar.docs', [])
 
           let workHoursToSpare = moment(endTime).diff(moment(availableHours.slice(-1)[0]), 'hours') * (10/24);
           if ( (hours < totalWorkHoursDuringProjectTimeLine) && (workHoursToSpare > 0 ) ) {
+            let colorChoices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+            let randomColor = colorChoices[Math.floor(Math.random() * colorChoices.length)];
             availableHours.forEach(function (hour) {
               let endHour = moment(hour).add(1, 'hours').format();
               let eventData = {
@@ -202,7 +204,8 @@ angular.module('mwl.calendar.docs', [])
                   "dateTime" : endHour
                 },
                 "summary" : title,
-                "description" : description
+                "description" : description, 
+                "colorId" : randomColor
               };
               postEvent(eventData);
             })
@@ -250,6 +253,8 @@ angular.module('mwl.calendar.docs', [])
 
           let workHoursToSpare = moment(endTime).diff(moment(availableHoursToBook.slice(-1)[0]), 'hours') * (10/24);
           if ( (hours < totalWorkHoursDuringProjectTimeLine) && (workHoursToSpare > 0 ) ) {
+            let colorChoices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+            let randomColor = colorChoices[Math.floor(Math.random() * colorChoices.length)];
             availableHoursToBook.forEach(function (hour) {
               let endHour = moment(hour).add(1, 'hours').format();
               let eventData = {
@@ -260,7 +265,8 @@ angular.module('mwl.calendar.docs', [])
                   "dateTime" : endHour
                 },
                 "summary" : title,
-                "description" : description
+                "description" : description,
+                "colorId" : randomColor
               };
               postEvent(eventData);
             })
