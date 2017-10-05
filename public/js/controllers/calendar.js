@@ -138,7 +138,7 @@ angular.module('mwl.calendar.docs', [])
               id: event.id,
               title: event.summary,
               // color: calendarConfig.colorTypes.info,
-              color: event.projectColors[event.colorId],
+              color: projectColors[event.colorId],
               startsAt: moment(event.start.dateTime).toDate(),
               endsAt: moment(event.end.dateTime).toDate(),
               draggable: true,
