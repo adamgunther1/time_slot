@@ -139,7 +139,8 @@ angular.module('mwl.calendar.docs', [])
         return {
           id: event.id,
           title: event.summary,
-          color: calendarConfig.colorTypes.info,
+          // color: calendarConfig.colorTypes.info,
+          color: green,
           startsAt: moment(event.startTime).toDate(),
           endsAt: moment(event.endTime).toDate(),
           draggable: true,
