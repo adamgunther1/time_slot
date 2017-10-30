@@ -147,7 +147,7 @@ angular.module('mwl.calendar.docs', [])
               resizable: false,
               actions: actions
             }
-
+          vm.events.push(newEvent)
           })
       };
 
