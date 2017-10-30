@@ -1,7 +1,8 @@
 angular.module('mwl.calendar.docs', [])
 
   .controller('calendarCtrl', function($scope, $route, moment, calendarConfig, Calendars) {
-      $scope.eventsLoaded = false;
+      // $scope.eventsLoaded = false;
+      $scope.eventsLoaded = true;
 
       var userAuth = { userToken : '', userEmail : '' };
 
