@@ -13,8 +13,6 @@
   "author": "Adam Gunther",
   "license": "ISC",
   "dependencies": {
-    "angular-bootstrap-calendar": "^0.30.0",
-    "angular-moment": "^1.0.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",

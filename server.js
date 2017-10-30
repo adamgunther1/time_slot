@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');         // pull information from HTML P
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var passport = require('passport');
 var flash = require('connect-flash');
-var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 require('dotenv').config();
